@@ -1,0 +1,126 @@
+<div>
+  <div class="jumbotron" style="width:80%;margin:auto">
+    <h1 class="display-3">Menú Adaptativo</h1>
+    <hr class="my-4">
+    <div class="container">
+  <div class="row">
+    <div  class="col-md-5" style="border:solid 1px #d5d5d5;">
+      <h2 style="text-align:center !important;">Menu con adaptación</h2>
+      <ul ng-style="menuObject.style" style="text-align:left !important;">
+        <li ng-repeat="item in menuObject.item | orderBy: '-counter' "  ng-if="item.isOption == 1">
+          <a ng-click="increaseItem(item)" ng-style="item.style">
+            <i ng-if="item.icon" ng-class="item.icon" aria-hidden="true" style="margin-right: 10px;"></i> {{item.name}} <b>({{item.counter}})</b>
+          </a>
+          <ul ng-if="item.item.length > 0">
+            <li ng-repeat="subitem in item.item | orderBy: '-counter' "  ng-if="subitem.isOption == 1">
+              <a  ng-click="increaseItem(subitem)" ng-style="subitem.style">
+                  <i ng-if="subitem.icon" ng-class="subitem.icon" aria-hidden="true" style="margin-right: 10px;"></i> {{subitem.name}} <b>({{subitem.counter}})</b>
+              </a>
+              <ul ng-if="subitem.item.length > 0">
+                <li ng-repeat="subitem1 in subitem.item | orderBy: '-counter' " ng-if="subitem1.isOption == 1">
+                  <a  ng-click="increaseItem(subitem1)"  ng-style="subitem1.style">
+                      <i ng-if="subitem1.icon" ng-class="subitem1.icon" aria-hidden="true" style="margin-right: 10px;"></i> {{subitem1.name}} <b>({{subitem1.counter}})</b>
+                  </a>
+                </li>
+                <li ng-repeat="subitem1 in subitem.item" ng-if="subitem1.isOption == 0">
+                  <a  ng-style="subitem1.style">
+                      <i ng-if="subitem1.icon" ng-class="subitem1.icon" aria-hidden="true" style="margin-right: 10px;"></i> {{subitem1.name}}
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li ng-repeat="subitem in item.item"  ng-if="subitem.isOption == 0">
+              <a  ng-click="increaseItem(subitem)" ng-style="subitem.style">
+                  <i ng-if="subitem.icon" ng-class="subitem.icon" aria-hidden="true" style="margin-right: 10px;"></i> {{subitem.name}}
+              </a>
+              <ul ng-if="subitem.item.length > 0">
+                <li ng-repeat="subitem1 in subitem.item | orderBy: '-counter' " ng-if="subitem1.isOption == 1">
+                  <a  ng-click="increaseItem(subitem1)"  ng-style="subitem1.style">
+                      <i ng-if="subitem1.icon" ng-class="subitem1.icon" aria-hidden="true" style="margin-right: 10px;"></i>{{subitem1.name}} <b>({{subitem1.counter}})</b>
+                  </a>
+                </li>
+                <li ng-repeat="subitem1 in subitem.item" ng-if="subitem1.isOption == 0">
+                  <a  ng-style="subitem1.style">
+                      <i ng-if="subitem1.icon" ng-class="subitem1.icon" aria-hidden="true" style="margin-right: 10px;"></i>{{subitem1.name}}
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li ng-repeat="item in menuObject.item"  ng-if="item.isOption == 0">
+          <a ng-style="item.style">
+              <i ng-if="item.icon" ng-class="item.icon" aria-hidden="true" style="margin-right: 10px;"></i>{{item.name}}
+          </a>
+          <ul ng-if="item.item.length > 0">
+            <li ng-repeat="subitem in item.item | orderBy: '-counter' "  ng-if="subitem.isOption == 1">
+              <a  ng-click="increaseItem(subitem)" ng-style="subitem.style">
+                  <i ng-if="subitem.icon" ng-class="subitem.icon" aria-hidden="true" style="margin-right: 10px;"></i>{{subitem.name}} <b>({{subitem.counter}})</b>
+              </a>
+              <ul ng-if="subitem.item.length > 0">
+                <li ng-repeat="subitem1 in subitem.item | orderBy: '-counter' " ng-if="subitem1.isOption == 1">
+                  <a  ng-click="increaseItem(subitem1)"  ng-style="subitem1.style">
+                      <i ng-if="subitem1.icon" ng-class="subitem1.icon" aria-hidden="true" style="margin-right: 10px;"></i>{{subitem1.name}} <b>({{subitem1.counter}})</b>
+                  </a>
+                </li>
+                <li ng-repeat="subitem1 in subitem.item" ng-if="subitem1.isOption == 0">
+                  <a  ng-style="subitem1.style">
+                      <i ng-if="subitem1.icon" ng-class="subitem1.icon" aria-hidden="true" style="margin-right: 10px;"></i>{{subitem1.name}}
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li ng-repeat="subitem in item.item"  ng-if="subitem.isOption == 0">
+              <a  ng-style="subitem.style">
+                  <i ng-if="subitem.icon" ng-class="item.icon" aria-hidden="true" style="margin-right: 10px;"></i>{{subitem.name}}
+              </a>
+              <ul ng-if="subitem.item.length > 0">
+                <li ng-repeat="subitem1 in subitem.item | orderBy: '-counter' " ng-if="subitem1.isOption == 1">
+                  <a  ng-click="increaseItem(subitem1)"  ng-style="subitem1.style">
+                      <i ng-if="subitem1.icon" ng-class="subitem1.icon" aria-hidden="true" style="margin-right: 10px;"></i>{{subitem1.name}} <b>({{subitem1.counter}})</b>
+                  </a>
+                </li>
+                <li ng-repeat="subitem1 in subitem.item" ng-if="subitem1.isOption == 0">
+                  <a  ng-style="subitem1.style">
+                      <i ng-if="subitem1.icon" ng-class="subitem1.icon" aria-hidden="true" style="margin-right: 10px;"></i>{{subitem1.name}}
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-5 col-md-offset-2" style="border:solid 1px #d5d5d5;">
+      <h2 style="text-align:center !important;">Menu sin adaptación</h2>
+      <ul style="text-align:left !important;">
+        <li ng-repeat="item in menuObject.item ">
+          <a >
+            {{item.name}}
+          </a>
+          <ul ng-if="item.item.length > 0">
+            <li ng-repeat="subitem in item.item ">
+              <a >
+                {{subitem.name}}
+              </a>
+              <ul ng-if="subitem.item.length > 0">
+                <li ng-repeat="subitem1 in subitem.item">
+                  <a >
+                    {{subitem1.name}}
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+    <hr class="my-4">
+  <h3 style="text-align:left !important;">JSON Leído:</h3>
+  <p style="text-align:left !important; font-size:small">{{menuObject}}</p>
+  </div>
+</div>
