@@ -50,6 +50,11 @@ angular.module('proyectoMenu', [
     controller: 'NuevoSectorCtrl',
     controllerAs: 'NuevoSectorCtrl'
   })
+  .when('/Sector/verSector', {
+    templateUrl: 'views/verSectores.html',
+    controller: 'VerSectoresCtrl',
+    controllerAs: 'VerSectoresCtrl'
+  })
   .otherwise({
     redirectTo: '/'
   });

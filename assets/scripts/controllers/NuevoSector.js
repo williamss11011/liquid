@@ -9,6 +9,8 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
   var lat = 0;
   var lng = 0;
   $scope.mymap = {};
+  $scope.drawPolygon = {};
+  $scope.sector={};
 
   function getLocation() {
     if (navigator.geolocation) {
@@ -45,7 +47,7 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
     $scope.mymap.remove();
 
     $scope.mymap = L.map('mapid', {
-      drawControl: true,
+      // drawControl: true,
       center: [lat, lng],
       zoom: 13
     });
@@ -56,35 +58,42 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
       id: 'mapbox.streets'
     }).addTo($scope.mymap);
 
-    // var drawnItems = new L.FeatureGroup();
-    // $scope.mymap.addLayer(drawnItems);
+    var drawnItems = new L.FeatureGroup();
+    $scope.mymap.addLayer(drawnItems);
 
-    // var drawControl = new L.Control.Draw();
-    // $scope.mymap.addControl(drawControl);
-
-    ////////////
-
-    
-
-    ///
+    var drawControl = new L.Control.Draw();
+    $scope.mymap.addControl(drawControl);
 
     $scope.mymap.on(L.Draw.Event.CREATED, function (e) {
       var layer = e.layer;
      
       // o whatever else you need to. (save to db; add to map etc)
       $scope.mymap.addLayer(layer);
-      $scope.saveDraw(layer.toGeoJSON());
-      
-      
-      
+      $scope.drawPolygon = layer.toGeoJSON();
+      // $scope.saveDraw(layer.toGeoJSON());
+        
    });
 
   }
 
-  $scope.saveDraw=function(layer)
+  $scope.saveDraw=function()
   {
-    console.log(layer);
-    $('#myModal').modal('toggle')
+    console.log("ENTRO AL MEOTODO !!!!!!")
+    console.log($scope.drawPolygon);
+    $scope.sector.poligono = JSON.stringify($scope.drawPolygon);   //el nombre poligono debe ser el mismode la base 
+    console.log( JSON.stringify($scope.drawPolygon));
+    console.log($scope.sector);
+    ServicioSector.ingresarSector($scope.sector).then(function(res){
+      alert("ingreso Correcto");
+    
+      }, function(err){
+           console.log(err)
+           alert("ingreso fallido");
+      
+      })
+
+    // $('#myModal').modal();
+    // $('#myModal').modal('open');
   }
 
 

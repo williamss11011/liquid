@@ -21,6 +21,10 @@ module.exports = {
        type:"string"
      },
 
+     color:{
+      type:"string"
+    },
+
      cuenta:{
       collection:"cuenta",
       via:"cuentasector"

@@ -3,7 +3,7 @@
 <button ng-click="initControlMaps()">
     Dibujar Sector
 </button>
-<button ng-click="saveDraw()">
+<button  data-toggle="modal" data-target="#myModal">
     Guardar Sector
 </button>
 <div class="modal" tabindex="-1" role="dialog" id="myModal">
@@ -17,10 +17,29 @@
         </div>
         <div class="modal-body">
           <p>Modal body text goes here.</p>
+
+          <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Nombre</label>
+            <input type="text" class="form-control" placeholder="Nombre" ng-model="sector.nombre">
+          </div>
+  
+          <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Descripcion</label>
+            <input type="text" class="form-control" placeholder="Descripcion" ng-model="sector.descripcion">
+          </div>
+          
+          <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Color</label>
+            <input type="color" class="form-control" placeholder="Color" ng-model="sector.color">
+          </div>
+  
+         
+
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" ng-click="saveDraw()">Save changes</button>
         </div>
       </div>
     </div>
