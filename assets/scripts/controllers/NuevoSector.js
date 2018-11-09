@@ -127,6 +127,7 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
 
       for (var i = 0; i < listaSectores.length; i++) {
         var poligono = JSON.parse(listaSectores[i].poligono) /// convierte el string a json 
+        poligono.properties = {'color': listaSectores[i].color}
         console.log(poligono)
         var myStyle = {
           "color": listaSectores[i].color,
@@ -139,10 +140,10 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
 
       function style(feature) {
         return {
-          fillColor: getColor(feature.properties.density),
+          fillColor: feature.properties.color,
           weight: 2,
           opacity: 1,
-          color: 'white',
+          color: feature.properties.color,
           dashArray: '3',
           fillOpacity: 0.7
         };
@@ -155,7 +156,6 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
       //    myLayer.addData(poligono);
       function highlightFeature(e) {
         var layer = e.target;
-
         layer.setStyle({
           weight: 5,
           color: '#666',
@@ -187,7 +187,7 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
       }
 
       geojson = L.geoJson(geoJsonData, {
-        //  style: style,
+        style: style,
         onEachFeature: onEachFeature
       }).addTo($scope.mymap);
 
@@ -197,7 +197,7 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
       //   style: myStyle
       // }).addTo($scope.mymap);
 
-
+      
 
     }, function (err) {
       console.log(err)
