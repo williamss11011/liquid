@@ -27,7 +27,7 @@ module.exports = {
 
      cuenta:{
       collection:"cuenta",
-      via:"cuentasector"
+      via:"sector_id"
     },
 
   },

@@ -27,7 +27,7 @@ module.exports = {
 
     cuenta:{
       collection:"cuenta",
-      via:"abonadocuenta"
+      via:"abonado_id"
     },
     
   },

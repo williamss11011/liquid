@@ -122,30 +122,48 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
       //    var myLayer = L.geoJSON().addTo($scope.mymap);
       var listaPoligonos = [];
       var listaEstilos = [];
-
       var geojson;
 
       for (var i = 0; i < listaSectores.length; i++) {
         var poligono = JSON.parse(listaSectores[i].poligono) /// convierte el string a json 
-        poligono.properties = {'color': listaSectores[i].color}
-        console.log(poligono)
-        var myStyle = {
-          "color": listaSectores[i].color,
-          "weight": 1,
-          "opacity": 1
-        };
+        poligono.properties = {
+          'color': listaSectores[i].color,
+          'nombre':listaSectores[i].nombre,
+          'descripcion':listaSectores[i].descripcion
+        }
+        
         listaPoligonos.push(poligono);
-        listaEstilos.push(myStyle);
+        
       }
+
+
+      // funcion de leyendas de seleccion de poligono
+      var info = L.control({position: 'topright'});
+
+      info.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+        this.update();
+        return this._div;
+      };
+
+      // method that we will use to update the control based on feature properties passed
+      info.update = function (props) {
+        this._div.innerHTML = '<h4>SECTOR</h4>' + (props ?
+          '<b>' + props.nombre + '</b><br />' + props.descripcion  :
+          'Seleccione un Sector para ver su información');
+      };
+
+      info.addTo($scope.mymap);
+
 
       function style(feature) {
         return {
           fillColor: feature.properties.color,
-          weight: 2,
+          weight: 1,
           opacity: 1,
           color: feature.properties.color,
-          dashArray: '3',
-          fillOpacity: 0.7
+          // dashArray: '3',
+          fillOpacity: 0.2
         };
       }
 
@@ -157,21 +175,23 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
       function highlightFeature(e) {
         var layer = e.target;
         layer.setStyle({
-          weight: 5,
-          color: '#666',
+          weight: 2,
+          color: 'white',
           dashArray: '',
-          fillOpacity: 0.7
+          fillOpacity: 0.4
         });
 
         if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
           layer.bringToFront();
         }
 
+        info.update(layer.feature.properties);
 
       }
 
       function resetHighlight(e) {
         geojson.resetStyle(e.target);
+        info.update();
       }
 
       function zoomToFeature(e) {
@@ -192,12 +212,6 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
       }).addTo($scope.mymap);
 
 
-
-      // L.geoJSON([poligono], {
-      //   style: myStyle
-      // }).addTo($scope.mymap);
-
-      
 
     }, function (err) {
       console.log(err)

@@ -33,11 +33,11 @@ module.exports = {
     },
     
     
-    cuentalectura:{
+    cuenta_id:{
       model:"cuenta",
     },
     
-    lecturausuario:{
+    usuario_id:{
       model:"usuario",
     },
 

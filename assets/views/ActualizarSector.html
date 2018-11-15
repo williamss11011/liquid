@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <h1>Actualizar Sector</h1>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card border-secondary mb-3">
+          <div class="card-header">Formulario</div>
+          <div class="card-body">
+  
+            <div class="form-group">
+              
+              <label class="col-form-label" for="inputDefault">Nombre</label>
+              <input type="text" class="form-control" placeholder="Nombre" ng-model="sectorseleccionado.nombre">
+  
+              <label class="col-form-label" for="inputDefault">Descripcion</label>
+              <input type="text" class="form-control" placeholder="Descripcion" ng-model="sectorseleccionado.descripcion">
+  
+              <label class="col-form-label" for="inputDefault">Color</label>
+              <input type="color" class="form-control" placeholder="Color" ng-model="sectorseleccionado.color">
+  
+            </div>
+            <button type="button" class="btn btn-primary" ng-click="actualizarSector()">Guardar</button>
+            <button type="button" class="btn btn-secondary">Regresar y cancelar</button>
+          </div>
+        </div>
+
+         
+      </div>
+  
+  
+      <div class="col-md-9">
+        <div class="card border-secondary mb-3">
+          <div class="card-header">Mapa</div>
+          <div class="card-body">
+            
+                  
+                  <div id="mapid" style="height:64vh"></div>
+  
+          </div>
+        </div>
+  
+      </div>
+  
+    </div>
+  </div>
+  

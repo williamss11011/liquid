@@ -55,6 +55,21 @@ angular.module('proyectoMenu', [
     controller: 'VerSectoresCtrl',
     controllerAs: 'VerSectoresCtrl'
   })
+  .when('/Cuentas/NuevaCuenta', {
+    templateUrl: 'views/ListaCuentas.html',
+    controller: 'ListaCuentasCtrl',
+    controllerAs: 'ListaCuentasCtrl'
+  })
+  .when('/Sector/GestionSectores', {
+    templateUrl: 'views/GestionSectores.html',
+    controller: 'GestionSectoresCtrl',
+    controllerAs: 'GestionSectoresCtrl'
+  })
+  .when('/Sector/ActualizarSectores', {
+    templateUrl: 'views/ActualizarSector.html',
+    controller: 'ActualizarSectoresCtrl',
+    controllerAs: 'ActualizarSectoresCtrl'
+  })
   .otherwise({
     redirectTo: '/'
   });

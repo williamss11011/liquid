@@ -23,17 +23,17 @@ module.exports = {
       type:"string",
     },
 
-    abonadocuenta:{
+    abonado_id:{
       model:"abonado",
     },
     
-    cuentasector:{
+    sector_id:{
       model:"sector",
     },
 
     lectura:{
       collection:"lectura",
-      via:"cuentalectura"
+      via:"cuenta_id"
     },
 
   },

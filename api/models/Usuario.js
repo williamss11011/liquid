@@ -40,7 +40,7 @@ module.exports = {
 
     lectura:{
       collection:"lectura",
-      via:"lecturausuario"
+      via:"usuario_id"
     },
 
   },
