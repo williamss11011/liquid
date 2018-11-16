@@ -47,6 +47,12 @@ $scope.SeleccionarUsuario=function(item)
   console.log(item);
 }
 
+$scope.regresar=function()
+{
+  $location.path('/usuarios');
+
+}
+
 
 $scope.actualizarUsuario=function()
   {

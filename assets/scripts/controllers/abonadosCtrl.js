@@ -48,6 +48,11 @@ $scope.SeleccionarAbonado=function(item)
   console.log(item);
 }
 
+$scope.regresar=function()
+{
+  $location.path('/abonados');
+
+}
 
 $scope.actualizarAbonado=function()
   {

@@ -70,6 +70,13 @@ angular.module('proyectoMenu', [
     controller: 'ActualizarSectoresCtrl',
     controllerAs: 'ActualizarSectoresCtrl'
   })
+  
+  .when('/PaginaPrincipal/', {
+    templateUrl: 'views/PaginaPrincipal.html',
+    controller: 'PaginaPrincipalCtrl',
+    controllerAs: 'PaginaPrincipalCtrl'
+  })
+  
   .otherwise({
     redirectTo: '/'
   });

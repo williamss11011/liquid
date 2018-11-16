@@ -20,8 +20,8 @@
 .gn-menu-main ul {
   margin: 0;
   padding: 0;
-  background: #64b5f6;
-  color: black;
+  background: #F4F4F4;
+  color: #0074D1;
   list-style: none;
   text-transform: none;
   font-weight: 300;
@@ -41,7 +41,7 @@
 .gn-menu-main a {
   display: block;
   height: 100%;
-  color: black;
+  color: #0074D1;
   text-decoration: none;
   cursor: pointer;
 }
@@ -229,8 +229,8 @@ input.gn-search:focus {
   content: "\e000"
 }
 
-.gn-icon-earth::before {
-  content: "\e004"
+.gn-icon-clipboard::before {
+  content: "\e913"
 }
 
 .gn-icon-cog::before {
@@ -241,37 +241,46 @@ input.gn-search:focus {
   content: "\e005"
 }
 
-.gn-icon-download::before {
-  content: "\e007"
+.gn-icon-myspace::before {
+  content: "\e912"
 }
 
-.gn-icon-photoshop::before {
-  content: "\e001"
+/* fddfd */
+.gn-icon-pin1::before {
+  content: "\e90a";
+  
+}
+
+.gn-icon-photo_size_select_small::before {
+  content: "\e434";
+  
+}
+
+.gn-icon-account_box::before {
+  content: "\e851"
 }
 
 .gn-icon-illustrator::before {
   content: "\e002"
 }
 
-.gn-icon-archive::before {
-  content: "\e00d"
+.gn-icon-map3::before {
+  content: "\e90c"
+}
+
+.gn-icon-list::before {
+  content: "\e9ba"
+}
+
+.gn-icon-speedometer::before {
+  content: "\e907"
 }
 
 .gn-icon-article::before {
-  content: "\e003"
+  content: "\e902"
 }
 
-.gn-icon-pictures::before {
-  content: "\e008"
-}
 
-.gn-icon-videos::before {
-  content: "\e009"
-}
-
-.icon-office:before {
-  content: "\e903";
-}
 
 /* if an icon anchor has a span, hide the span */
 
@@ -287,8 +296,8 @@ input.gn-search:focus {
   vertical-align: -2px;
   width: 30px;
   height: 3px;
-  background: black;
-  box-shadow: 0 3px #64B5F6, 0 -6px black, 0 -9px #64B5F6, 0 -12px black;
+  background: #0074D1;
+  box-shadow: 0 3px #F4F4F4, 0 -6px #0074D1, 0 -9px #F4F4F4, 0 -12px #0074D1;
   content: '';
 }
 
@@ -299,8 +308,8 @@ input.gn-search:focus {
 }
 
 .gn-icon-menu.gn-selected::before {
-  background: #5993cd;
-  box-shadow: 0 3px white, 0 -6px #5993cd, 0 -9px white, 0 -12px #5993cd;
+  background: #0074D1;
+  box-shadow: 0 3px white, 0 -6px #0074D1, 0 -9px white, 0 -12px #0074D1;
 }
 
 /* styles for opening menu */

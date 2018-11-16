@@ -13,8 +13,23 @@ function funcionActualizarSectoresCtrl($scope, $rootScope, $location, ServicioSe
   getLocation();
 
   $scope.actualizarSector = function () {
+    ServicioSector.actualizarSector($scope.sectorseleccionado).then(function (res) {
+      alert("El registro se ha actualizo correctamente");
+      $location.path('/Sector/GestionSectores');
+    }, function (err) {
+      console.log(err)
+      alert("actualizacion fallida");
 
-  }
+    })
+  };
+
+$scope.regresar=function()
+{
+  $location.path('/Sector/GestionSectores');
+
+}
+
+
 
   function getLocation() {
     if (navigator.geolocation) {
@@ -50,15 +65,45 @@ function funcionActualizarSectoresCtrl($scope, $rootScope, $location, ServicioSe
       dashArray: '',
       fillColor: $scope.sectorseleccionado.color,
       fillOpacity: 0.2
-      
-    } 
+
+    }
     var test = L.geoJSON(poligono, {
       style: myStyle
     }).addTo($scope.mymap);
 
     $scope.mymap.fitBounds(test.getBounds());
 
+    //  var drawnItems = new L.FeatureGroup();
+    //  $scope.mymap.addLayer(drawnItems);
+    var drawControl = new L.Control.Draw({
+      draw: {
+        polygon: false,
+        polyline: false,
+        circle: false,
+        rectangle: false,
+        marker: false
+      },
+
+      edit: {
+        featureGroup: test,
+        remove: false
+
+      }
+    });
+    $scope.mymap.addControl(drawControl);
+
+    $scope.mymap.on('draw:edited', function (e) {
+      var layers = e.layers;
+      layers.eachLayer(function (layer) {
+        $scope.sectorseleccionado.poligono = JSON.stringify(layer.toGeoJSON());
+
+      });
+
+
+    });
   }
+
+
 
 }
 

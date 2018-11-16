@@ -1,38 +1,113 @@
+<div class="container-fluid">
 
-<h1>Abonados</h1>
-<div class="table-responsive"> 
-<button data-toggle="modal" data-target="#myModal">Nuevo Abonado</button>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Apellido</th>
-      <th scope="col">Cedula</th>
-      <th scope="col">Telefono</th>
-      <th scope="col">Correo</th>
-      <th scope="col">Opciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="item in listaabonados">
-      <td>{{item.nombre}}</td>
-      <td>{{item.apellido}}</td>
-      <td>{{item.cedula}}</td>
-      <td>{{item.telefono}}</td>
-      <td>{{item.correo}}</td>
-      <td>
-        <button data-toggle="modal" data-target="#EditarModal" ng-click="SeleccionarAbonado(item)"><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></button>
-        <button data-toggle="modal" data-target="#BorrarModal" ng-click="SeleccionarAbonado(item)"><i class="fa fa-trash-o" aria-hidden="true" ></i></button>
-      </td>
-      
-    </tr>
+  <h1>Gestion de Abonados</h1>
+  <div class="row">
 
-  </tbody>
+    <div class="col-md-3">
+      <div class="card border-secondary mb-3">
+        <div class="card-header">Nuevo Abonado</div>
+        <div class="card-body">
+          <!-- contenido -->
+          <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Nombre</label>
+            <input type="text" class="form-control" placeholder="Nombre" ng-model="abonado.nombre">
+
+            <label class="col-form-label" for="inputDefault">Apellido</label>
+            <input type="text" class="form-control" placeholder="Apellido" ng-model="abonado.apellido">
+
+            <label class="col-form-label" for="inputDefault">cedula</label>
+            <input type="text" class="form-control" placeholder="cedula" ng-model="abonado.cedula">
+
+            <label class="col-form-label" for="inputDefault">Telefono</label>
+            <input type="text" class="form-control" placeholder="Telefono" ng-model="abonado.telefono">
+
+            <label class="col-form-label" for="inputDefault">Correo</label>
+            <input type="text" class="form-control" placeholder="correo" ng-model="abonado.correo">
+          </div>
+
+          <button type="button" class="btn btn-success" ng-click="guardarAbonado()">Guardar</button>
+          <button type="button" class="btn btn-danger" ng-click="regresar()">cancelar</button>
 
 
-</table>
+        </div>
+      </div>
+    </div>
 
-<div class="modal" id="myModal">
+
+    <div class="col-md-9">
+      <div class="card border-secondary mb-3">
+        <div class="card-header">Tabla Abonados</div>
+        <div class="card-body">
+          <!-- contenido -->
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellido</th>
+                  <th scope="col">Cedula</th>
+                  <th scope="col">Telefono</th>
+                  <th scope="col">Correo</th>
+                  <th scope="col">Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="item in listaabonados">
+                  <td>{{item.nombre}}</td>
+                  <td>{{item.apellido}}</td>
+                  <td>{{item.cedula}}</td>
+                  <td>{{item.telefono}}</td>
+                  <td>{{item.correo}}</td>
+                  <td>
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#EditarModal" ng-click="SeleccionarAbonado(item)"><i
+                        class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#BorrarModal" ng-click="SeleccionarAbonado(item)"><i
+                        class="fa fa-trash-o" aria-hidden="true"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="table-responsive">
+      <button data-toggle="modal" data-target="#myModal">Nuevo Abonado</button>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Cedula</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in listaabonados">
+            <td>{{item.nombre}}</td>
+            <td>{{item.apellido}}</td>
+            <td>{{item.cedula}}</td>
+            <td>{{item.telefono}}</td>
+            <td>{{item.correo}}</td>
+            <td>
+              <button data-toggle="modal" data-target="#EditarModal" ng-click="SeleccionarAbonado(item)"><i class="fa fa-pencil-square-o"
+                  aria-hidden="true"></i></button>
+              <button data-toggle="modal" data-target="#BorrarModal" ng-click="SeleccionarAbonado(item)"><i class="fa fa-trash-o"
+                  aria-hidden="true"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div> -->
+
+  </div>
+</div>
+
+
+<!-- <div class="modal" id="myModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -58,12 +133,12 @@
           <label class="col-form-label" for="inputDefault">cedula</label>
           <input type="text" class="form-control" placeholder="cedula" ng-model="abonado.cedula">
         </div>
-        
+
         <div class="form-group">
           <label class="col-form-label" for="inputDefault">Telefono</label>
           <input type="text" class="form-control" placeholder="Telefono" ng-model="abonado.telefono">
         </div>
-        
+
         <div class="form-group">
           <label class="col-form-label" for="inputDefault">Correo</label>
           <input type="text" class="form-control" placeholder="correo" ng-model="abonado.correo">
@@ -77,7 +152,8 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
 
 <div class="modal" id="EditarModal">
   <div class="modal-dialog" role="document">
@@ -89,38 +165,29 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <p>Realizar cambios para editar el registro</p>
 
         <div class="form-group">
           <label class="col-form-label" for="inputDefault">Nombre</label>
           <input type="text" class="form-control" placeholder="Nombre" ng-model="abonadoseleccionado.nombre">
-        </div>
 
-        <div class="form-group">
           <label class="col-form-label" for="inputDefault">Apellido</label>
           <input type="text" class="form-control" placeholder="Apellido" ng-model="abonadoseleccionado.apellido">
-        </div>
 
-        <div class="form-group">
           <label class="col-form-label" for="inputDefault">cedula</label>
           <input type="text" class="form-control" placeholder="cedula" ng-model="abonadoseleccionado.cedula">
-        </div>
-        
-        <div class="form-group">
+
           <label class="col-form-label" for="inputDefault">Telefono</label>
           <input type="text" class="form-control" placeholder="Telefono" ng-model="abonadoseleccionado.telefono">
-        </div>
-        
-        <div class="form-group">
+
           <label class="col-form-label" for="inputDefault">Correo</label>
           <input type="text" class="form-control" placeholder="correo" ng-model="abonadoseleccionado.correo">
         </div>
 
-
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" ng-click="actualizarAbonado()">Guardar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">cancelar</button>
+        <button type="button" class="btn btn-success" ng-click="actualizarAbonado()">Guardar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">cancelar</button>
       </div>
     </div>
   </div>
@@ -139,18 +206,12 @@
       <div class="modal-body">
         <p>Esta seguro que desea Eliminar el registro seleccionado.</p>
 
-       
-
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" ng-click="BorrarAbonado()">Aceptar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" ng-click="BorrarAbonado()">Aceptar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
   </div>
-</div>
-
-
-
 </div>

@@ -1,186 +1,233 @@
+<div class="container-fluid">
+  <h1>Gestion de Usuarios</h1>
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="card border-secondary mb-3">
+        <div class="card-header">Nuevo Usuario</div>
+        <div class="card-body">
+
+          <!-- formulario -->
+
+          <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Nombre</label>
+            <input type="text" class="form-control" placeholder="Nombre" ng-model="usuario.nombre">
+          </div>
+
+          <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Apellido</label>
+            <input type="text" class="form-control" placeholder="Apellido" ng-model="usuario.apellido">
+
+            <label class="col-form-label" for="inputDefault">cedula</label>
+            <input type="text" class="form-control" placeholder="cedula" ng-model="usuario.cedula">
+
+            <label class="col-form-label" for="inputDefault">Telefono</label>
+            <input type="text" class="form-control" placeholder="Telefono" ng-model="usuario.telefono">
+
+            <label class="col-form-label" for="inputDefault">Correo</label>
+            <input type="text" class="form-control" placeholder="correo" ng-model="usuario.correo">
+
+            <label class="col-form-label" for="inputDefault">Password</label>
+            <input type="text" class="form-control" placeholder="password" ng-model="usuario.password">
+
+            <label class="col-form-label" for="inputDefault">Descripcion</label>
+            <input type="text" class="form-control" placeholder="descripcion" ng-model="usuario.descripcion">
+
+            <label class="col-form-label" for="inputDefault">Rol</label>
+            <input type="text" class="form-control" placeholder="rol" ng-model="usuario.rol">
+          </div>
+
+          <button type="button" class="btn btn-success" ng-click="guardarUsuario()">Guardar</button>
+          <button type="button" class="btn btn-danger" ng-click="regresar()">Cancelar</button>
+
+        </div>
+      </div>
+    </div>
 
 
-<div class="table-responsive"> 
-    <button data-toggle="modal" data-target="#myModal">Nuevo Usuario</button>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Cedula</th>
-          <th scope="col">Telefono</th>
-          <th scope="col">Correo</th>
-          <th scope="col">Password</th>
-          <th scope="col">Descripcion</th>
-          <th scope="col">Rol</th>
-          <th scope="col">Opciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="item in listausuarios">
-          <td>{{item.nombre}}</td>
-          <td>{{item.apellido}}</td>
-          <td>{{item.cedula}}</td>
-          <td>{{item.telefono}}</td>
-          <td>{{item.correo}}</td>
-          <td>{{item.password}}</td>
-          <td>{{item.descripcion}}</td>
-          <td>{{item.rol}}</td>
-          <td>
-            <button data-toggle="modal" data-target="#EditarModal" ng-click="SeleccionarUsuario(item)"><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></button>
-            <button data-toggle="modal" data-target="#BorrarModal" ng-click="SeleccionarUsuario(item)"><i class="fa fa-trash-o" aria-hidden="true" ></i></button>
-          </td>
-          
-        </tr>
-    
-      </tbody>
-    
-    
-    </table>
-    
-    <div class="modal" id="myModal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Ingreso Usuario</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Modal body text goes here.</p>
-    
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">Nombre</label>
-              <input type="text" class="form-control" placeholder="Nombre" ng-model="usuario.nombre">
-            </div>
-    
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">Apellido</label>
-              <input type="text" class="form-control" placeholder="Apellido" ng-model="usuario.apellido">
-            </div>
-    
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">cedula</label>
-              <input type="text" class="form-control" placeholder="cedula" ng-model="usuario.cedula">
-            </div>
-            
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">Telefono</label>
-              <input type="text" class="form-control" placeholder="Telefono" ng-model="usuario.telefono">
-            </div>
-            
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">Correo</label>
-              <input type="text" class="form-control" placeholder="correo" ng-model="usuario.correo">
-            </div>
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">Password</label>
-              <input type="text" class="form-control" placeholder="password" ng-model="usuario.password">
-            </div>
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">Descripcion</label>
-              <input type="text" class="form-control" placeholder="descripcion" ng-model="usuario.descripcion">
-            </div>
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">Rol</label>
-              <input type="text" class="form-control" placeholder="rol" ng-model="usuario.rol">
-            </div>
-    
-    
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" ng-click="guardarUsuario()">Guardar</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+
+    <div class="col-md-9">
+
+      <div class="card border-secondary mb-3">
+        <div class="card-header">Tabla de Usuarios</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellido</th>
+                  <th scope="col">Cedula</th>
+                  <th scope="col">Telefono</th>
+                  <th scope="col">Correo</th>
+                  <th scope="col">Password</th>
+                  <th scope="col">Descripcion</th>
+                  <th scope="col">Rol</th>
+                  <th scope="col">Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="item in listausuarios">
+                  <td>{{item.nombre}}</td>
+                  <td>{{item.apellido}}</td>
+                  <td>{{item.cedula}}</td>
+                  <td>{{item.telefono}}</td>
+                  <td>{{item.correo}}</td>
+                  <td>{{item.password}}</td>
+                  <td>{{item.descripcion}}</td>
+                  <td>{{item.rol}}</td>
+                  <td>
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#EditarModal" ng-click="SeleccionarUsuario(item)"><i
+                        class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#BorrarModal" ng-click="SeleccionarUsuario(item)"><i
+                        class="fa fa-trash-o" aria-hidden="true"></i></button>
+                  </td>
+
+                </tr>
+
+              </tbody>
+
+
+            </table>
           </div>
         </div>
       </div>
+
+
     </div>
-    
-    <div class="modal" id="EditarModal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Editar Usuario</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Modal body text goes here.</p>
-    
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">Nombre</label>
-              <input type="text" class="form-control" placeholder="Nombre" ng-model="usuarioseleccionado.nombre">
-            </div>
-    
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">Apellido</label>
-              <input type="text" class="form-control" placeholder="Apellido" ng-model="usuarioseleccionado.apellido">
-            </div>
-    
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">cedula</label>
-              <input type="text" class="form-control" placeholder="cedula" ng-model="usuarioseleccionado.cedula">
-            </div>
-            
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">Telefono</label>
-              <input type="text" class="form-control" placeholder="Telefono" ng-model="usuarioseleccionado.telefono">
-            </div>
-            
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">Correo</label>
-              <input type="text" class="form-control" placeholder="correo" ng-model="usuarioseleccionado.correo">
-            </div>
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">Password</label>
-              <input type="text" class="form-control" placeholder="password" ng-model="usuarioseleccionado.password">
-            </div>
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">Descripcion</label>
-              <input type="text" class="form-control" placeholder="descripcion" ng-model="usuarioseleccionado.descripcion">
-            </div>
-            <div class="form-group">
-              <label class="col-form-label" for="inputDefault">Rol</label>
-              <input type="text" class="form-control" placeholder="rol" ng-model="usuarioseleccionado.rol">
-            </div>
-    
-    
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" ng-click="actualizarUsuario()">Guardar</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- <div class="modal" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ingreso Usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">Nombre</label>
+          <input type="text" class="form-control" placeholder="Nombre" ng-model="usuario.nombre">
         </div>
+
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">Apellido</label>
+          <input type="text" class="form-control" placeholder="Apellido" ng-model="usuario.apellido">
+        </div>
+
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">cedula</label>
+          <input type="text" class="form-control" placeholder="cedula" ng-model="usuario.cedula">
+        </div>
+
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">Telefono</label>
+          <input type="text" class="form-control" placeholder="Telefono" ng-model="usuario.telefono">
+        </div>
+
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">Correo</label>
+          <input type="text" class="form-control" placeholder="correo" ng-model="usuario.correo">
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">Password</label>
+          <input type="text" class="form-control" placeholder="password" ng-model="usuario.password">
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">Descripcion</label>
+          <input type="text" class="form-control" placeholder="descripcion" ng-model="usuario.descripcion">
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">Rol</label>
+          <input type="text" class="form-control" placeholder="rol" ng-model="usuario.rol">
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="guardarUsuario()">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
-    
-    
-    <div class="modal" id="BorrarModal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Eliminar Abonado</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Esta seguro que desea Eliminar el registro seleccionado.</p>
-    
-           
-    
-    
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" ng-click="BorrarUsuario()">Aceptar</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          </div>
+  </div>
+</div> -->
+
+
+
+<div class="modal" id="EditarModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Realizar cambios para editar el registro </p>
+
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">Nombre</label>
+          <input type="text" class="form-control" placeholder="Nombre" ng-model="usuarioseleccionado.nombre">
+
+          <label class="col-form-label" for="inputDefault">Apellido</label>
+          <input type="text" class="form-control" placeholder="Apellido" ng-model="usuarioseleccionado.apellido">
+
+          <label class="col-form-label" for="inputDefault">cedula</label>
+          <input type="text" class="form-control" placeholder="cedula" ng-model="usuarioseleccionado.cedula">
+
+          <label class="col-form-label" for="inputDefault">Telefono</label>
+          <input type="text" class="form-control" placeholder="Telefono" ng-model="usuarioseleccionado.telefono">
+
+          <label class="col-form-label" for="inputDefault">Correo</label>
+          <input type="text" class="form-control" placeholder="correo" ng-model="usuarioseleccionado.correo">
+
+          <label class="col-form-label" for="inputDefault">Password</label>
+          <input type="text" class="form-control" placeholder="password" ng-model="usuarioseleccionado.password">
+
+          <label class="col-form-label" for="inputDefault">Descripcion</label>
+          <input type="text" class="form-control" placeholder="descripcion" ng-model="usuarioseleccionado.descripcion">
+
+          <label class="col-form-label" for="inputDefault">Rol</label>
+          <input type="text" class="form-control" placeholder="rol" ng-model="usuarioseleccionado.rol">
         </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" ng-click="actualizarUsuario()">Guardar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
-    
-        
+  </div>
+</div>
+
+
+<div class="modal" id="BorrarModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Eliminar Abonado</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Esta seguro que desea Eliminar el registro seleccionado.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" ng-click="BorrarUsuario()">Aceptar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+      </div>
     </div>
-    
+  </div>
+</div>
