@@ -55,10 +55,10 @@ angular.module('proyectoMenu', [
     controller: 'VerSectoresCtrl',
     controllerAs: 'VerSectoresCtrl'
   })
-  .when('/Cuentas/NuevaCuenta', {
-    templateUrl: 'views/ListaCuentas.html',
-    controller: 'ListaCuentasCtrl',
-    controllerAs: 'ListaCuentasCtrl'
+  .when('/Cuentas/GestionCuentas', {
+    templateUrl: 'views/GestionCuentas.html',
+    controller: 'GestionCuentasCtrl',
+    controllerAs: 'GestionCuentasCtrl'
   })
   .when('/Sector/GestionSectores', {
     templateUrl: 'views/GestionSectores.html',
