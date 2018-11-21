@@ -1,0 +1,118 @@
+<div class="container-fluid">
+
+  <h1>Nueva Cuenta</h1>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card border-secondary mb-3">
+        <div class="card-header">Formulario</div>
+        <div class="card-body">
+
+          <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Abonado</label>
+            <select class="form-control" ng-model="Cuenta.abonado_id">
+              <option ng-repeat="abonado in ListaAbonados" ng-value="abonado.id">{{abonado.nombre}}</option>
+            </select>
+
+            <label class="col-form-label" for="inputDefault">Sectores</label>
+            <select class="form-control" ng-model="Cuenta.sector" ng-change="CambioSector()">
+              <option ng-repeat="sector in ListaSectores" ng-value="sector">{{sector.nombre}}</option>
+            </select>
+
+            <label class="col-form-label" for="inputDefault">Tarifa</label>
+            <select class="form-control" ng-model="Cuenta.tarifa">
+              <option value="Comercial">Comercial</option>
+              <option value="Industrial">Industrial</option>
+              <option value="Publico">Publico</option>
+              <option value="Residencial">Residencial</option>
+            </select>
+
+
+            <label class="col-form-label" for="inputDefault">Marca de medidor</label>
+            <input type="text" class="form-control" placeholder="Marca de medidor" ng-model="Cuenta.marca_medidor">
+
+            <label class="col-form-label" for="inputDefault">Direccion</label>
+            <input type="text" class="form-control" placeholder="Direccion" ng-model="Cuenta.direccion">
+          </div>
+
+
+          <button class="btn btn-primary " ng-click="initControlMaps()">Dibujar</button>
+          <button type="button" class="btn btn-success " ng-click="IngresarCuenta()">Guardar</button>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+    <div class="col-md-9">
+
+      <div class="card border-secondary mb-3">
+        <div class="card-header">
+          Mapa
+
+
+        </div>
+        <div class="card-body">
+
+          <div id="mapid" style="height:64vh"></div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="modal" tabindex="-1" role="dialog" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">Nombre</label>
+          <input type="text" class="form-control" placeholder="Nombre" ng-model="sector.nombre">
+        </div>
+
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">Descripcion</label>
+          <input type="text" class="form-control" placeholder="Descripcion" ng-model="sector.descripcion">
+        </div>
+
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">Color</label>
+          <input type="color" class="form-control" placeholder="Color" ng-model="sector.color">
+        </div>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="saveDraw()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,44 +5,49 @@
   <div class="card border-secondary mb-3">
     <div class="card-header align-content-end">
       <button class="btn btn-success btn-sm " ng-click="irNuevosector()">Nueva Cuenta</button>
-      
+
     </div>
     <div class="card-body">
 
-    <div class="table-responsive">
-      <!-- <button class="btn btn-primary" ng-click="irNuevosector()">Nuevo Sector</button> -->
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Medidor</th>
-            <th scope="col">Direccion</th>
-            <th scope="col">Tarifa</th>
-            <th scope="col">Opciones</th>
-
-            
-
-
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="item in listaCuentas">
-            <td>{{item.marca_medidor}}</td>
-            <td>{{item.direccion}}</td>
-            <td>{{item.tarifa}}</td>
+      <div class="table-responsive">
+        <!-- <button class="btn btn-primary" ng-click="irNuevosector()">Nuevo Sector</button> -->
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Abonado</th>
+              <th scope="col">Cedula</th>
+              <th scope="col">Sector</th>
+              <th scope="col">Medidor</th>
+              <th scope="col">Direccion</th>
+              <th scope="col">Tarifa</th>
+              <th scope="col">Opciones</th>
 
 
-            <td>
-              <button class="btn btn-primary btn-sm" ng-click="actualizarsector(item)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-              <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#BorrarModal" ng-click="Seleccionarsector(item)"><i class="fa fa-trash-o"
-                  aria-hidden="true"></i></button>
-            </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in listaCuentas">
+              <td>{{item.abonado_id.nombre}} {{item.abonado_id.apellido}}</td>
+              <td>{{item.abonado_id.cedula}}</td>
+              <td>{{item.sector_id.nombre}}</td>
+              <td>{{item.marca_medidor}}</td>
+              <td>{{item.direccion}}</td>
+              <td>{{item.tarifa}}</td>
 
-          </tr>
 
-        </tbody>
+              <td>
+                <button class="btn btn-primary btn-sm" ng-click="actualizarsector(item)"><i class="fa fa-pencil-square-o"
+                    aria-hidden="true"></i></button>
+                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#BorrarModal" ng-click="Seleccionarsector(item)"><i
+                    class="fa fa-trash-o" aria-hidden="true"></i></button>
+              </td>
+
+            </tr>
+
+          </tbody>
 
 
-      </table>
+        </table>
       </div>
     </div>
   </div>

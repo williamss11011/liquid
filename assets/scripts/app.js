@@ -77,6 +77,12 @@ angular.module('proyectoMenu', [
     controllerAs: 'PaginaPrincipalCtrl'
   })
   
+  .when('/Cuentas/NuevaCuenta', {
+    templateUrl: 'views/NuevaCuenta.html',
+    controller: 'NuevaCuentaCtrl',
+    controllerAs: 'NuevaCuentaCtrl'
+  })
+  
   .otherwise({
     redirectTo: '/'
   });
