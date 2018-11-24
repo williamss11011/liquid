@@ -8,7 +8,7 @@ function funcionNuevaCuenta($scope, $rootScope, ServicioSector, ServicioAbonado,
   $scope.ListaAbonados = [];
   $scope.Cuenta = {};
   $scope.mymap = {};
-  $scope.CrearMarcador ={};
+  $scope.CrearMarcador = {};
 
   var lat = 0;
   var lng = 0;
@@ -38,9 +38,9 @@ function funcionNuevaCuenta($scope, $rootScope, ServicioSector, ServicioAbonado,
 
 
   $scope.CambioSector = function () {
-    
-    restartMap();
 
+    restartMap();
+    getCuentasxSector($scope.Cuenta.sector);
     // console.log($scope.Cuenta.sector);
     var poligono = JSON.parse($scope.Cuenta.sector.poligono) /// convierte el string a json 
     var myStyle = {
@@ -63,14 +63,15 @@ function funcionNuevaCuenta($scope, $rootScope, ServicioSector, ServicioAbonado,
   $scope.initControlMaps = function () {
 
     var drawControl = new L.Control.Draw({
-        draw: {
-          polygon: false,
-          polyline: false,
-          circle: false,
-          rectangle: false,
-          marker: true
-        },          
-      });   
+      draw: {
+        circlemarker: true,
+        polygon: false,
+        polyline: false,
+        circle: false,
+        rectangle: false,
+        marker: false
+      },
+    });
     $scope.mymap.addControl(drawControl);
 
 
@@ -85,6 +86,103 @@ function funcionNuevaCuenta($scope, $rootScope, ServicioSector, ServicioAbonado,
 
     });
 
+  }
+
+  function getCuentasxSector(sector) {
+    ServicioCuentas.buscarPorSectorId(sector.id).then(function (res) {
+      var listacuentas=[]
+      console.log(res.data)
+      listacuentas = res.data;
+      console.log(listacuentas)
+      var listaMarcadores = [];
+      var geojson;
+
+      for (var i = 0; i < listacuentas.length; i++) {
+        var marcador = JSON.parse(listacuentas[i].coordenada) /// convierte el string a json 
+        marcador.properties = {
+          'nombre': listacuentas[i].abonado_id.nombre,
+          'apellido': listacuentas[i].abonado_id.apellido,
+          'cedula': listacuentas[i].abonado_id.cedula,
+          'marcamedidor': listacuentas[i].marca_medidor,
+          'tarifa': listacuentas[i].tarifa,
+        };
+        listaMarcadores.push(marcador);
+      }
+      var myStyle = {
+        weight: 3,
+        color: 'black',
+        dashArray: '',
+        fillColor: 'black',
+        fillOpacity: 0.5
+      }
+
+      // funcion de leyendas de seleccion de poligono
+      var info = L.control({
+        position: 'topright'
+      });
+
+      info.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+        this.update();
+        return this._div;
+      };
+
+      // method that we will use to update the control based on feature properties passed
+      info.update = function (props) {
+        this._div.innerHTML = '<h4>DATOS</h4>' + (props ?
+          '<h6> <b>Nombre: </b>' + props.nombre + ' ' +  props.apellido + '</h6>' + 
+          '<h6> <b>Cedula: </b>' + props.cedula + '<br/>' + 
+          '<h6> <b>Marca de Medidor: </b>' + props.marcamedidor + '<br/>' +
+          '<h6> <b>Tarifa: </b>' + props.tarifa  + '<br/>' :
+          'Seleccione un Marcador para ver su información');
+      };
+
+      info.addTo($scope.mymap);
+      console.log("+++++++++++++++++++++++++++++++++++++++")
+      console.log(listaMarcadores)
+      var geoJsonData = {
+        "type": "FeatureCollection",
+        "features": listaMarcadores
+      };
+      //    myLayer.addData(poligono);
+      function highlightFeature(e) {
+        var layer = e.target;
+        
+        // if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        //   layer.bringToFront();
+        // }
+
+        info.update(layer.feature.properties);
+
+      }
+
+      function resetHighlight(e) {
+        // geojson.resetStyle(e.target);
+        info.update();
+      }
+
+      function zoomToFeature(e) {
+        $scope.mymap.fitBounds(e.target.getBounds());
+      }
+
+      function onEachFeature(feature, layer) {
+        layer.on({
+          mouseover: highlightFeature,
+          mouseout: resetHighlight,
+          click: zoomToFeature
+        });
+      }
+
+      geojson = L.geoJson(geoJsonData, {
+        onEachFeature: onEachFeature,
+        pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng, myStyle);
+        }
+      }).addTo($scope.mymap);
+
+    }, function (err) {
+      console.log(err)
+    })
   }
 
   function getLocation() {
@@ -107,7 +205,7 @@ function funcionNuevaCuenta($scope, $rootScope, ServicioSector, ServicioAbonado,
     });
 
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
+      maxZoom: 24,
       attribution: 'Tesis',
       id: 'mapbox.streets'
     }).addTo($scope.mymap);
@@ -115,25 +213,23 @@ function funcionNuevaCuenta($scope, $rootScope, ServicioSector, ServicioAbonado,
     // var marker = L.marker([lat, lng]).addTo($scope.mymap);   ---obtiene posicion gps 
   }
 
-  $scope.IngresarCuenta=function()
-  {
+  $scope.IngresarCuenta = function () {
     $scope.Cuenta.sector_id = parseInt($scope.Cuenta.sector.id);
     $scope.Cuenta.abonado_id = parseInt($scope.Cuenta.abonado_id);
     $scope.Cuenta.coordenada = JSON.stringify($scope.CrearMarcador);
     ServicioCuentas.ingresarCuentas($scope.Cuenta).then(function (res) {
-        alert("ingreso Correcto");
-        restartMap();
-        $scope.Cuenta = {};
+      alert("ingreso Correcto");
+      restartMap();
+      $scope.Cuenta = {};
 
-      }, function (err) {
-        console.log(err)
-        alert("ingreso fallido");
-  
-      })
+    }, function (err) {
+      console.log(err)
+      alert("ingreso fallido");
+
+    })
   }
 
-  function restartMap ()
-  {
+  function restartMap() {
     $scope.mymap.remove();
 
     $scope.mymap = L.map('mapid', {
@@ -143,14 +239,14 @@ function funcionNuevaCuenta($scope, $rootScope, ServicioSector, ServicioAbonado,
     });
 
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
+      maxZoom: 24,
       attribution: 'Tesis',
       id: 'mapbox.streets'
     }).addTo($scope.mymap);
-  } 
-  
-      
-  
+  }
+
+
+
 
 }
 

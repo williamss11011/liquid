@@ -121,7 +121,6 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
       var listaSectores = res.data;
       //    var myLayer = L.geoJSON().addTo($scope.mymap);
       var listaPoligonos = [];
-      var listaEstilos = [];
       var geojson;
 
       for (var i = 0; i < listaSectores.length; i++) {

@@ -4,7 +4,7 @@
   <h1>Gestión De Cuentas</h1>
   <div class="card border-secondary mb-3">
     <div class="card-header align-content-end">
-      <button class="btn btn-success btn-sm " ng-click="irNuevosector()">Nueva Cuenta</button>
+      <button class="btn btn-success btn-sm " ng-click="irNuevacuenta()">Nueva Cuenta</button>
 
     </div>
     <div class="card-body">
@@ -36,9 +36,9 @@
 
 
               <td>
-                <button class="btn btn-primary btn-sm" ng-click="actualizarsector(item)"><i class="fa fa-pencil-square-o"
+                <button class="btn btn-primary btn-sm" ng-click="actualizarcuentas(item)"><i class="fa fa-pencil-square-o"
                     aria-hidden="true"></i></button>
-                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#BorrarModal" ng-click="Seleccionarsector(item)"><i
+                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#BorrarModal" ng-click="Seleccionarcuentas(item)"><i
                     class="fa fa-trash-o" aria-hidden="true"></i></button>
               </td>
 
@@ -70,7 +70,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" ng-click="BorrarSector()">Aceptar</button>
+        <button type="button" class="btn btn-success" ng-click="BorrarCuentas()">Aceptar</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
       </div>
     </div>

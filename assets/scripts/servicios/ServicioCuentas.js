@@ -38,10 +38,10 @@ function funcionServicioCuentas($q, $http) {
     return promise;
   };
 
-  this.buscarPorId = function (id) {
+  this.buscarPorSectorId = function (id) {
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.get('http://localhost:1337/menu/' + id).then(function (data) {
+    $http.get('http://localhost:1337/cuenta?sector_id=' + id).then(function (data) {
       defered.resolve(data);
     }, function (err) {
       defered.reject(err);

@@ -24,9 +24,11 @@ function funcionGestionCuentasCtrl ($scope, $rootScope, $location, ServicioCuent
   obtenerCuentas();
 
 
+
+
 $scope.irNuevacuenta=function()
 {
-  $location.path('/Cuenta/nueva');
+  $location.path('/Cuentas/NuevaCuenta');
 }
 
 $scope.Seleccionarcuentas=function(item)
@@ -39,7 +41,7 @@ $scope.Seleccionarcuentas=function(item)
 $scope.actualizarcuentas=function(item)
   {
     $rootScope.cuentaAactualizar=item;
-    $location.path('/Cuenta/ActualizarCuentas');
+    $location.path('/Cuentas/ActualizarCuenta');
   };
 
   

@@ -81,6 +81,13 @@ angular.module('proyectoMenu', [
     templateUrl: 'views/NuevaCuenta.html',
     controller: 'NuevaCuentaCtrl',
     controllerAs: 'NuevaCuentaCtrl'
+   
+  })
+  .when('/Cuentas/ActualizarCuenta', {
+    templateUrl: 'views/ActualizarCuenta.html',
+    controller: 'ActualizarCuentaCtrl',
+    controllerAs: 'ActualizarCuentaCtrl'
+   
   })
   
   .otherwise({
