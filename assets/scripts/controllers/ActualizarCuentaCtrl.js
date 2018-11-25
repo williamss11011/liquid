@@ -13,9 +13,10 @@ function funcionActualizarCuentaCtrl($scope, $rootScope, $location, ServicioSect
   console.log("______________________________________--")
   console.log($scope.cuentaseleccionada)
   $scope.mymap = {};
-  var lat = 0;
-  var lng = 0;
-  getLocation();
+  var lat = "-0.169350";
+  var lng = "-78.470962";
+  
+  initMap();
 
   
 
@@ -72,10 +73,10 @@ function funcionActualizarCuentaCtrl($scope, $rootScope, $location, ServicioSect
     }
   }
 
-  function showPosition(position) {
+  function initMap(position) {
 
-    lat = position.coords.latitude;
-    lng = position.coords.longitude;
+    lat = "-0.169350"; 
+    lng = "-78.470962";
 
     // initialize the map on the "map" div with a given center and zoom
     $scope.mymap = L.map('mapid', {

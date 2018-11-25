@@ -4,12 +4,13 @@ var app = angular.module('proyectoMenu');
 app.service('ServicioAbonado', funcionServicioAbonado);
 
 function funcionServicioAbonado($q, $http){
-
+  var ip = "192.168.1.6";
+  // var ip = "localhost";
   this.ingresarAbonado = function(abonado){
     var defered = $q.defer();
     var promise = defered.promise;
 
-    $http.post('http://localhost:1337/abonado', abonado).then(function(data){
+    $http.post('http://'+ip+':1337/abonado', abonado).then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);
@@ -20,7 +21,7 @@ function funcionServicioAbonado($q, $http){
   this.actualizarAbonado = function(abonado){
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.put('http://localhost:1337/abonado/'+abonado.id, abonado).then(function(data){
+    $http.put('http://'+ip+':1337/abonado/'+abonado.id, abonado).then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);
@@ -31,7 +32,7 @@ function funcionServicioAbonado($q, $http){
   this.recuperarAbonados = function(){
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.get('http://localhost:1337/abonado').then(function(data){
+    $http.get('http://'+ip+':1337/abonado').then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);
@@ -42,7 +43,7 @@ function funcionServicioAbonado($q, $http){
   this.buscarPorId = function(id){
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.get('http://localhost:1337/menu/'+id).then(function(data){
+    $http.get('http://'+ip+':1337/menu/'+id).then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);
@@ -54,7 +55,7 @@ function funcionServicioAbonado($q, $http){
   this.eliminarAbonado = function(abonado){
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.delete('http://localhost:1337/abonado/'+abonado.id).then(function(data){
+    $http.delete('http://'+ip+':1337/abonado/'+abonado.id).then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);

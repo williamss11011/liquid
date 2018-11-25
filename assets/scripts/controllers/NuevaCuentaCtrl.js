@@ -12,7 +12,7 @@ function funcionNuevaCuenta($scope, $rootScope, ServicioSector, ServicioAbonado,
 
   var lat = 0;
   var lng = 0;
-  getLocation();
+  initmap();
 
   var obtenerAbonados = function () {
     ServicioAbonado.recuperarAbonados().then(function (res) {
@@ -193,10 +193,10 @@ function funcionNuevaCuenta($scope, $rootScope, ServicioSector, ServicioAbonado,
     }
   }
 
-  function showPosition(position) {
+  function initmap(position) {
 
-    lat = position.coords.latitude;
-    lng = position.coords.longitude;
+    lat = "-0.169350"; 
+    lng = "-78.470962";
 
     // initialize the map on the "map" div with a given center and zoom
     $scope.mymap = L.map('mapid', {

@@ -5,13 +5,14 @@ app.controller('NuevoSectorCtrl', funcionNuevoSectorCtrl);
 
 function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
 
-  getLocation();
-  getSectores();
+  
   var lat = 0;
   var lng = 0;
   $scope.mymap = {};
   $scope.drawPolygon = {};
   $scope.sector = {};
+  initMap();
+  
 
   function getLocation() {
     if (navigator.geolocation) {
@@ -21,11 +22,11 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
     }
   }
 
-  function showPosition(position) {
+  function initMap(position) {
 
 
-    lat = position.coords.latitude;
-    lng = position.coords.longitude;
+    lat = "-0.169350"; 
+    lng = "-78.470962";
 
 
     // initialize the map on the "map" div with a given center and zoom
@@ -42,7 +43,7 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
     }).addTo($scope.mymap);
 
     var marker = L.marker([lat, lng]).addTo($scope.mymap);
-
+    getSectores();
   }
 
   $scope.initControlMaps = function () {

@@ -7,7 +7,9 @@
  * 
  * Copyright 2013, Codrops
  * http://www.codrops.com
+ * 
  */
+
 ;( function( window ) {
 	
 	'use strict';
@@ -23,6 +25,9 @@
 		this.el = el;
 		this._init();
 	}
+	
+
+
 
 	gnMenu.prototype = {
 		_init : function() {
@@ -84,9 +89,14 @@
 			classie.remove( this.menu, 'gn-open-all' );
 			this._closeIconMenu();
 		}
+		
+
+		
 	}
 
 	// add to global namespace
 	window.gnMenu = gnMenu;
 
 } )( window );
+
+

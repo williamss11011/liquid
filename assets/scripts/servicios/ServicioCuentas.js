@@ -3,12 +3,13 @@ var app = angular.module('proyectoMenu');
 app.service('ServicioCuentas', funcionServicioCuentas);
 
 function funcionServicioCuentas($q, $http) {
-
+  var ip = "192.168.1.6";
+  // var ip = "localhost";
   this.ingresarCuentas = function (cuenta) {
     var defered = $q.defer();
     var promise = defered.promise;
 
-    $http.post('http://localhost:1337/cuenta', cuenta).then(function (data) {
+    $http.post('http://'+ip+':1337/cuenta', cuenta).then(function (data) {
       defered.resolve(data);
     }, function (err) {
       defered.reject(err);
@@ -19,7 +20,7 @@ function funcionServicioCuentas($q, $http) {
   this.actualizarCuentas = function (cuenta) {
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.put('http://localhost:1337/cuenta/' + cuenta.id, cuenta).then(function (data) {
+    $http.put('http://'+ip+':1337/cuenta/' + cuenta.id, cuenta).then(function (data) {
       defered.resolve(data);
     }, function (err) {
       defered.reject(err);
@@ -30,7 +31,7 @@ function funcionServicioCuentas($q, $http) {
   this.recuperarCuentas = function () {
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.get('http://localhost:1337/cuenta').then(function (data) {
+    $http.get('http://'+ip+':1337/cuenta').then(function (data) {
       defered.resolve(data);
     }, function (err) {
       defered.reject(err);
@@ -41,7 +42,7 @@ function funcionServicioCuentas($q, $http) {
   this.buscarPorSectorId = function (id) {
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.get('http://localhost:1337/cuenta?sector_id=' + id).then(function (data) {
+    $http.get('http://'+ip+':1337/cuenta?sector_id=' + id).then(function (data) {
       defered.resolve(data);
     }, function (err) {
       defered.reject(err);
@@ -53,7 +54,7 @@ function funcionServicioCuentas($q, $http) {
   this.eliminarCuentas = function (cuenta) {
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.delete('http://localhost:1337/cuenta/' + cuenta.id).then(function (data) {
+    $http.delete('http://'+ip+':1337/cuenta/' + cuenta.id).then(function (data) {
       defered.resolve(data);
     }, function (err) {
       defered.reject(err);

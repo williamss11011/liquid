@@ -4,12 +4,13 @@ var app = angular.module('proyectoMenu');
 app.service('ServicioItem', funcionServicioItem);
 
 function funcionServicioItem($q, $http){
-
+  var ip = "192.168.1.6";
+  // var ip = "localhost";
   this.ingresarUsuario = function(usuario){
     var defered = $q.defer();
     var promise = defered.promise;
 
-    $http.post('http://localhost:1337/usuario',usuario).then(function(data){
+    $http.post('http://'+ip+':1337/usuario',usuario).then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);
@@ -21,7 +22,7 @@ function funcionServicioItem($q, $http){
     var defered = $q.defer();
     var promise = defered.promise;
 
-    $http.get('http://localhost:1337/usuario').then(function(data){
+    $http.get('http://'+ip+':1337/usuario').then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);
@@ -33,7 +34,7 @@ function funcionServicioItem($q, $http){
     var defered = $q.defer();
     var promise = defered.promise;
 
-    $http.get('http://localhost:1337/usuario/'+id).then(function(data){
+    $http.get('http://'+ip+':1337/usuario/'+id).then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);
@@ -45,7 +46,7 @@ function funcionServicioItem($q, $http){
     var defered = $q.defer();
     var promise = defered.promise;
     console.log(nick+' '+password);
-    $http.get('http://localhost:1337/usuario?where={"nick":"'+nick+'","password":"'+password+'"}').then(function(data){
+    $http.get('http://'+ip+':1337/usuario?where={"nick":"'+nick+'","password":"'+password+'"}').then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);
@@ -56,7 +57,7 @@ function funcionServicioItem($q, $http){
   this.loginXcorreo = function(correo){
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.get('http://localhost:1337/usuario?where={"email":"'+correo+'"}').then(function(data){
+    $http.get('http://'+ip+':1337/usuario?where={"email":"'+correo+'"}').then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);
@@ -68,7 +69,7 @@ function funcionServicioItem($q, $http){
     var defered = $q.defer();
     var promise = defered.promise;
 
-    $http.delete('http://localhost:1337/usuario/'+id).then(function(data){
+    $http.delete('http://'+ip+':1337/usuario/'+id).then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);
@@ -83,7 +84,7 @@ function funcionServicioItem($q, $http){
     //var id = usuario.id_usuario;
     //console.log(id);
 
-    $http.put('http://localhost:1337/usuario/'+usuario.id_usuario, usuario).then(function(data){
+    $http.put('http://'+ip+':1337/usuario/'+usuario.id_usuario, usuario).then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);

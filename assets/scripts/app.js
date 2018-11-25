@@ -89,6 +89,13 @@ angular.module('proyectoMenu', [
     controllerAs: 'ActualizarCuentaCtrl'
    
   })
+
+  .when('/mobile/', {
+    templateUrl: 'views/mobile.html',
+    controller: 'mobileCtrl',
+    controllerAs: 'mobileCtrl'
+   
+  })
   
   .otherwise({
     redirectTo: '/'

@@ -10,7 +10,7 @@ function funcionActualizarSectoresCtrl($scope, $rootScope, $location, ServicioSe
   $scope.mymap = {};
   var lat = 0;
   var lng = 0;
-  getLocation();
+  initMap();
 
   $scope.actualizarSector = function () {
     ServicioSector.actualizarSector($scope.sectorseleccionado).then(function (res) {
@@ -31,18 +31,18 @@ $scope.regresar=function()
 
 
 
-  function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-      x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-  }
+  // function getLocation() {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(showPosition);
+  //   } else {
+  //     x.innerHTML = "Geolocation is not supported by this browser.";
+  //   }
+  // }
 
-  function showPosition(position) {
+  function initMap(position) {
 
-    lat = position.coords.latitude;
-    lng = position.coords.longitude;
+    lat = "-0.169350"; 
+    lng = "-78.470962";
 
     // initialize the map on the "map" div with a given center and zoom
     $scope.mymap = L.map('mapid', {
