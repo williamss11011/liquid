@@ -3,10 +3,10 @@
 var app = angular.module('proyectoMenu');
 app.controller('UsuariosCtrl', funcionUsuariosCtrl);
 
-function funcionUsuariosCtrl ($scope, $rootScope, $location, ServicioUsuario){
+function funcionUsuariosCtrl ($scope, $rootScope, $location, ServicioUsuario,ServicioSector){
   $scope.listausuarios=[];
   $scope.usuarioseleccionado={};
-
+  $scope.ListaSectores=[];
   $scope.usuario={}
   $scope.guardarUsuario=function()
   {
@@ -79,7 +79,18 @@ $scope.actualizarUsuario=function()
     })
   };
 
+  var obtenerSectores = function () {
+    ServicioSector.recuperarSector().then(function (res) {
+      $scope.ListaSectores = res.data;
+      console.log($scope.ListaSectores)
+    }, function (err) {
+      console.log(err)
+    })
+
+  };
+  obtenerSectores();
+
 
 }
 
-funcionUsuariosCtrl.inject = ['$scope', '$rootScope', '$location','ServicioUsuario'];
+funcionUsuariosCtrl.inject = ['$scope', '$rootScope', '$location','ServicioUsuario','ServicioSector'];

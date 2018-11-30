@@ -37,6 +37,10 @@ module.exports = {
       type:"number"
     },
 
+    sector_id:{
+      model:"sector",
+    },
+
 
     lectura:{
       collection:"lectura",

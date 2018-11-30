@@ -32,6 +32,10 @@ module.exports = {
       type:"string",
     },
     
+    estado:{
+      type:"string",
+    },
+    
     
     cuenta_id:{
       model:"cuenta",

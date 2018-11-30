@@ -48,20 +48,15 @@
           <nav class="gn-menu-wrapper">
             <div class="gn-scroller">
               <ul class="gn-menu">
-
-
-
                 <li><a class="gn-icon gn-icon-photo_size_select_small" href="/#!/Sector/GestionSectores" onclick="myFunction()">Gestion de Sectores</a></li>
                 <li><a class="gn-icon gn-icon-myspace" href="/#!/abonados">Abonados</a></li>
                 <li><a class="gn-icon gn-icon-account_box" href="/#!/usuarios">Usuarios</a></li>
                 <li><a class="gn-icon gn-icon-map3" href="/#!/Sector/verSector">Mapa General</a></li>
                 <li><a class="gn-icon gn-icon-list" href="/#!/Cuentas/GestionCuentas">Gestion de cuentas</a></li>
+                <li><a class="gn-icon gn-icon-speedometer" href="/#!/Lectura/Iniciolectura">Toma de lecturas</a></li>
                 <li><a class="gn-icon gn-icon-article" href="/#!/">Reporte</a></li>
-                <li><a class="gn-icon gn-icon-speedometer" href="/#!/">Toma de lecturas</a></li>
                 <li><a class="gn-icon gn-icon-pin1" href="/#!/">Mapa de medidores</a></li>
                 <li><a class="gn-icon gn-icon-clipboard" href="/#!/">Catalogo</a></li>
-
-
               </ul>
             </div><!-- /gn-scroller -->
           </nav>
@@ -75,7 +70,9 @@
 
   <div>
     <div ng-view="">
+      
       <header>
+        
       </header>
     </div>
   </div>
@@ -110,6 +107,8 @@
   <script src="libs/leaflet/leaflet.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+<!-- scannerQR -->
+  <script type="text/javascript" src="libs/scanqr/instascan.min.js"></script>
 
 
   <!-- bower:js -->
@@ -145,7 +144,8 @@
   <script src="scripts/controllers/PaginaPrincipalCtrl.js"></script>
   <script src="scripts/controllers/NuevaCuentaCtrl.js"></script>
   <script src="scripts/controllers/ActualizarCuentaCtrl.js"></script>
-  <script src="scripts/controllers/mobileCtrl.js"></script>
+  <script src="scripts/controllers/InicioLecturaCtrl.js"></script>
+  <script src="scripts/controllers/LoginCtrl.js"></script>
 
 
 
@@ -158,6 +158,7 @@
   <script src="scripts/servicios/servicioUsuario.js"></script>
   <script src="scripts/servicios/ServicioCuentas.js"></script>
   <script src="scripts/servicios/ServicioPaginaPrincipal.js"></script>
+  <script src="scripts/servicios/ServicioLectura.js"></script>
 
 
 

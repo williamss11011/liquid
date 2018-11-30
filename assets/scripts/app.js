@@ -33,7 +33,7 @@ angular.module('proyectoMenu', [
   .when('/menu/', {
     templateUrl: 'views/GenerateMenu.html',
     controller: 'generarMenuCtrl',
-    controllerAs: 'generarMenuCtrl'
+    controllerAs: 'generarMenuCtrl'         
   })
   .when('/abonados/', {
     templateUrl: 'views/ListaAbonados.html',
@@ -90,10 +90,18 @@ angular.module('proyectoMenu', [
    
   })
 
-  .when('/mobile/', {
-    templateUrl: 'views/mobile.html',
-    controller: 'mobileCtrl',
-    controllerAs: 'mobileCtrl'
+  .when('/Lectura/Iniciolectura', {
+    templateUrl: 'views/InicioLectura.html',
+    controller: 'InicioLecturaCtrl',
+    controllerAs: 'InicioLecturaCtrl'
+   
+  })
+
+  .when('/Login', {
+    templateUrl: 'views/login.html',
+    controller: 'LoginCtrl',
+    controllerAs: 'LoginCtrl',
+    abstract: true
    
   })
   

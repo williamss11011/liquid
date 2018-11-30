@@ -9,28 +9,32 @@ module.exports = {
 
   attributes: {
 
-     nombre:{
-       type:"string"
-     },
-
-     poligono:{
-       type:"string"
-     },
-
-     descripcion:{
-       type:"string"
-     },
-
-     color:{
-      type:"string"
+    nombre: {
+      type: "string"
     },
 
-     cuenta:{
-      collection:"cuenta",
-      via:"sector_id"
+    poligono: {
+      type: "string"
+    },
+
+    descripcion: {
+      type: "string"
+    },
+
+    color: {
+      type: "string"
+    },
+
+    cuenta: {
+      collection: "cuenta",
+      via: "sector_id"
+    },
+
+    usuario: {
+      collection: "usuario",
+      via: "sector_id"
     },
 
   },
 
 };
-

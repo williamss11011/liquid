@@ -4,8 +4,8 @@ var app = angular.module('proyectoMenu');
 app.service('ServicioSector', funcionServicioSector);
 
 function funcionServicioSector($q, $http){
-var ip = "192.168.1.6";
-  //  var ip = "localhost";
+//var ip = "192.168.1.4";
+    var ip = "localhost";
     this.ingresarSector = function(sector){
         var defered = $q.defer();
         var promise = defered.promise;
@@ -43,7 +43,7 @@ var ip = "192.168.1.6";
       this.buscarPorId = function(id){
         var defered = $q.defer();
         var promise = defered.promise;
-        $http.get('http://'+ip+':1337/menu/'+id).then(function(data){
+        $http.get('http://'+ip+':1337/sector/'+id).then(function(data){
           defered.resolve(data);
         },function(err){
           defered.reject(err);

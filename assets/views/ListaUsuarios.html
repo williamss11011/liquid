@@ -35,6 +35,13 @@
 
             <label class="col-form-label" for="inputDefault">Rol</label>
             <input type="text" class="form-control" placeholder="rol" ng-model="usuario.rol">
+
+            <label class="col-form-label" for="inputDefault">Sector</label>
+            <select class="form-control" ng-model="usuario.sector_id">
+              <option ng-repeat="sector in ListaSectores" ng-value="sector.id">{{sector.nombre}}</option>
+            </select>
+
+
           </div>
 
           <button type="button" class="btn btn-success" ng-click="guardarUsuario()">Guardar</button>
@@ -63,6 +70,7 @@
                   <th scope="col">Password</th>
                   <th scope="col">Descripcion</th>
                   <th scope="col">Rol</th>
+                  <th scope="col">Sector</th>
                   <th scope="col">Opciones</th>
                 </tr>
               </thead>
@@ -76,6 +84,7 @@
                   <td>{{item.password}}</td>
                   <td>{{item.descripcion}}</td>
                   <td>{{item.rol}}</td>
+                  <td>{{item.sector_id.nombre}}</td>
                   <td>
                     <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#EditarModal" ng-click="SeleccionarUsuario(item)"><i
                         class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
@@ -199,6 +208,11 @@
 
           <label class="col-form-label" for="inputDefault">Rol</label>
           <input type="text" class="form-control" placeholder="rol" ng-model="usuarioseleccionado.rol">
+          
+          <label class="col-form-label" for="inputDefault">Sector</label>
+            <select class="form-control" ng-model="usuarioseleccionado.sector_id">
+              <option ng-repeat="sector in ListaSectores" ng-value="sector.id">{{sector.nombre}}</option>
+            </select>
         </div>
 
 

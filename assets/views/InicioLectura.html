@@ -1,0 +1,62 @@
+<div class="container-fluid">
+
+  <h1>Inicio Lectura</h1>
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="card border-secondary mb-3">
+        <div class="card-header">
+          Mapa
+        </div>
+        <div class="card-body">
+          <div id="mapid" style="height:45vh"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal" ng-click="habilitarCamara()">Identificar
+        Abonado</button>
+    </div>
+  </div>
+</div>
+
+<!-- modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ingreso</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+        <video id="preview" style="width:100%; height:300px;"></video>
+        <div id="formulario" style="display:none;">
+
+          <h5>Abonado: <b>{{cuentaLeida.abonado_id.nombre}} {{cuentaLeida.abonado_id.apellido}}</b></h5>
+          <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Nueva Lectura</label>
+            <input type="Number" class="form-control" ng-model="lecturaAnterior.valor_lectura">
+
+            <label class="col-form-label" for="inputDefault">Consumo</label>
+            <input type="Number" disabled class="form-control" ng-model="lectura.valor_consumo">
+
+            <label class="col-form-label" for="inputDefault">valor a pagar</label>
+            <input type="Number" disabled class="form-control" ng-model="lectura.valor_pago">
+
+            <label class="col-form-label" for="inputDefault">Observacion</label>
+            <input type="text" class="form-control" ng-model="lectura.observacion">
+
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="guardarUsuario()">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

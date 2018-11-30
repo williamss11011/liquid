@@ -4,7 +4,7 @@ var app = angular.module('proyectoMenu');
 app.service('ServicioItem', funcionServicioItem);
 
 function funcionServicioItem($q, $http){
-  var ip = "192.168.1.6";
+  var ip = "192.168.1.4";
   // var ip = "localhost";
   this.ingresarUsuario = function(usuario){
     var defered = $q.defer();
