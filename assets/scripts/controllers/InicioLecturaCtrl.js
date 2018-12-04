@@ -217,7 +217,7 @@ function funcionInicioLecturaCtrl($scope, $rootScope, $location, ServicioLectura
         $scope.lecturaAnterior.valor_lectura = 0;
       }else{
         $scope.lecturaAnterior = $scope.lecturaAnterior[0];
-        console.log("NEPE")
+        console.log("test")
         console.log($scope.lecturaAnterior)
       }
     }, function (error) {

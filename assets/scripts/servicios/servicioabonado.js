@@ -4,8 +4,9 @@ var app = angular.module('proyectoMenu');
 app.service('ServicioAbonado', funcionServicioAbonado);
 
 function funcionServicioAbonado($q, $http){
-  var ip = "192.168.1.4";
-   //var ip = "localhost";
+  //var ip = "192.168.1.4";
+   var ip = "localhost";
+   //var ip="fc97be22.ngrok.io";
   this.ingresarAbonado = function(abonado){
     var defered = $q.defer();
     var promise = defered.promise;
