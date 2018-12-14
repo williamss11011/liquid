@@ -3,13 +3,16 @@ var app = angular.module('proyectoMenu');
 app.service('ServicioCuentas', funcionServicioCuentas);
 
 function funcionServicioCuentas($q, $http) {
- // var ip = "192.168.1.4";
-   var ip = "localhost";
+  //var ip = "192.168.1.4";
+     var ip = "http://localhost:1337";
+     //var ip="https://eb83084b.ngrok.io";
+
+   
   this.ingresarCuentas = function (cuenta) {
     var defered = $q.defer();
     var promise = defered.promise;
 
-    $http.post('http://'+ip+':1337/cuenta', cuenta).then(function (data) {
+    $http.post(ip+'/cuenta', cuenta).then(function (data) {
       defered.resolve(data);
     }, function (err) {
       defered.reject(err);
@@ -20,7 +23,7 @@ function funcionServicioCuentas($q, $http) {
   this.actualizarCuentas = function (cuenta) {
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.put('http://'+ip+':1337/cuenta/' + cuenta.id, cuenta).then(function (data) {
+    $http.put(ip+'/cuenta/' + cuenta.id, cuenta).then(function (data) {
       defered.resolve(data);
     }, function (err) {
       defered.reject(err);
@@ -31,7 +34,7 @@ function funcionServicioCuentas($q, $http) {
   this.recuperarCuentas = function () {
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.get('http://'+ip+':1337/cuenta').then(function (data) {
+    $http.get(ip+'/cuenta').then(function (data) {
       defered.resolve(data);
     }, function (err) {
       defered.reject(err);
@@ -42,7 +45,7 @@ function funcionServicioCuentas($q, $http) {
   this.buscarPorSectorId = function (id) {
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.get('http://'+ip+':1337/cuenta?sector_id=' + id).then(function (data) {
+    $http.get(ip+'/cuenta?sector_id=' + id).then(function (data) {
       defered.resolve(data);
     }, function (err) {
       defered.reject(err);
@@ -53,7 +56,7 @@ function funcionServicioCuentas($q, $http) {
   this.buscarPorId = function (id) {
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.get('http://'+ip+':1337/cuenta/' + id).then(function (data) {
+    $http.get(ip+'/cuenta/' + id).then(function (data) {
       defered.resolve(data);
     }, function (err) {
       defered.reject(err);
@@ -65,7 +68,7 @@ function funcionServicioCuentas($q, $http) {
   this.eliminarCuentas = function (cuenta) {
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.delete('http://'+ip+':1337/cuenta/' + cuenta.id).then(function (data) {
+    $http.delete(ip+'/cuenta/' + cuenta.id).then(function (data) {
       defered.resolve(data);
     }, function (err) {
       defered.reject(err);

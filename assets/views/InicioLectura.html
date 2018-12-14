@@ -37,8 +37,15 @@
 
           <h5>Abonado: <b>{{cuentaLeida.abonado_id.nombre}} {{cuentaLeida.abonado_id.apellido}}</b></h5>
           <div class="form-group">
+
+            <label class="col-form-label" for="inputDefault">Estado</label>
+            <select class="form-control" ng-model="lectura.tip" ng-change="SeleccionarTip()">
+              <option value="leido">Leido</option>
+              <option value="pendiente">Pendiente</option>
+            </select>
+
             <label class="col-form-label" for="inputDefault">Nueva Lectura</label>
-            <input type="Number" class="form-control" ng-model="lecturaAnterior.valor_lectura">
+            <input type="Number" class="form-control" id="valorlectura" ng-model="lectura.valor_lectura" ng-change="CalculoLectura()">
 
             <label class="col-form-label" for="inputDefault">Consumo</label>
             <input type="Number" disabled class="form-control" ng-model="lectura.valor_consumo">
@@ -54,7 +61,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" ng-click="guardarUsuario()">Guardar</button>
+        <button type="button" class="btn btn-primary" ng-click="guardarLectura()">Guardar</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
       </div>
     </div>

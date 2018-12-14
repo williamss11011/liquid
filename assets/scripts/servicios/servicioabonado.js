@@ -5,13 +5,14 @@ app.service('ServicioAbonado', funcionServicioAbonado);
 
 function funcionServicioAbonado($q, $http){
   //var ip = "192.168.1.4";
-   var ip = "localhost";
-   //var ip="fc97be22.ngrok.io";
+   var ip = "http://localhost:1337";
+   //var ip="https://eb83084b.ngrok.io";
   this.ingresarAbonado = function(abonado){
     var defered = $q.defer();
     var promise = defered.promise;
 
-    $http.post('http://'+ip+':1337/abonado', abonado).then(function(data){
+   // $http.post('http://'+ip+':1337/abonado', abonado).then(function(data){
+    $http.post(ip+'/abonado', abonado).then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);
@@ -22,7 +23,7 @@ function funcionServicioAbonado($q, $http){
   this.actualizarAbonado = function(abonado){
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.put('http://'+ip+':1337/abonado/'+abonado.id, abonado).then(function(data){
+    $http.put(ip+'/abonado/'+abonado.id, abonado).then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);
@@ -33,7 +34,8 @@ function funcionServicioAbonado($q, $http){
   this.recuperarAbonados = function(){
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.get('http://'+ip+':1337/abonado').then(function(data){
+    //$http.get('http://'+ip+':1337/abonado').then(function(data){
+    $http.get(ip+'/abonado').then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);
@@ -44,7 +46,7 @@ function funcionServicioAbonado($q, $http){
   this.buscarPorId = function(id){
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.get('http://'+ip+':1337/menu/'+id).then(function(data){
+    $http.get(ip+'/menu/'+id).then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);
@@ -56,7 +58,7 @@ function funcionServicioAbonado($q, $http){
   this.eliminarAbonado = function(abonado){
     var defered = $q.defer();
     var promise = defered.promise;
-    $http.delete('http://'+ip+':1337/abonado/'+abonado.id).then(function(data){
+    $http.delete(ip+'/abonado/'+abonado.id).then(function(data){
       defered.resolve(data);
     },function(err){
       defered.reject(err);

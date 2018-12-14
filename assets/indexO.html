@@ -12,6 +12,10 @@
 
   <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="libs/leaflet/leaflet.css">
+  <!-- login -->
+  <link rel="stylesheet" href="styles/ds.css">
+
+
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css" /> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
 
@@ -35,107 +39,87 @@
   <link rel="stylesheet" type="text/css" href="css/demo.css" />
   <link rel="stylesheet" type="text/css" href="css/component.css" />
   <script src="js/modernizr.custom.js"></script>
+  <!--===============================================================================================-->
+  
 
+  <!--===============================================================================================-->
 
-
-
-  <title>Login GLAP</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="../libs/login/images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../libs/login/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../libs/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../libs/login/vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="../libs/login/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../libs/login/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../libs/login/css/util.css">
-	<link rel="stylesheet" type="text/css" href="../libs/login/css/main.css">
-<!--===============================================================================================-->
 </head>
 
 <body>
-    <div class="limiter">
-        <div class="container-login100">
-          <div class="wrap-login100">
-            <div class="login100-pic js-tilt" data-tilt>
-              <img src="../libs/login/images/img-01.png" alt="IMG">
-            </div>
-    
-            <form class="login100-form validate-form">
-              <span class="login100-form-title">
-                Usuario GLAP 
-              </span>
-    
-              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                <input class="input100" type="text" name="email" placeholder="Correo">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-              </div>
-    
-              <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                <input class="input100" type="password" name="pass" placeholder="Contraseña">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                  <i class="fa fa-lock" aria-hidden="true"></i>
-                </span>
-              </div>
-              
-              <div class="container-login100-form-btn">
-                <button class="login100-form-btn">
-                  INgresar
-                </button>
-              </div>
-    
-              <div class="text-center p-t-12">
-                <span class="txt1">
-                  Olvido su
-                </span>
-                <a class="txt2" href="#">
-                  Usuario / Contraseña?
-                </a>
-              </div>
-    
-              
-            </form>
-          </div>
-        </div>
+
+  <nav class="navbar sticky-top">
+    <div class="container">
+
+      <ul id="gn-menu" class="gn-menu-main">
+        <li class="gn-trigger">
+          <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+          <nav class="gn-menu-wrapper">
+            <div class="gn-scroller">
+              <ul class="gn-menu">
+                <li><a class="gn-icon gn-icon-photo_size_select_small" href="/#!/Sector/GestionSectores" onclick="myFunction()">Gestion
+                    de Sectores</a></li>
+                <li><a class="gn-icon gn-icon-myspace" href="/#!/abonados">Abonados</a></li>
+                <li><a class="gn-icon gn-icon-account_box" href="/#!/usuarios">Usuarios</a></li>
+                <li><a class="gn-icon gn-icon-map3" href="/#!/Sector/verSector">Mapa General</a></li>
+                <li><a class="gn-icon gn-icon-list" href="/#!/Cuentas/GestionCuentas">Gestion de cuentas</a></li>
+                <li><a class="gn-icon gn-icon-speedometer" href="/#!/Lectura/Iniciolectura">Toma de lecturas</a></li>
+                <li><a class="gn-icon gn-icon-article" href="/#!/">Reporte</a></li>
+                <li><a class="gn-icon gn-icon-pin1" href="/#!/">Mapa de medidores</a></li>
+                <li><a class="gn-icon gn-icon-clipboard" href="/#!/">Catalogo</a></li>
+              </ul>
+            </div><!-- /gn-scroller -->
+          </nav>
+        </li>
+        <li><a href="/#!/PaginaPrincipal/">Inicio</a></li>
+        <li><a class="codrops-icon codrops-icon-prev" href="/#!/Sector/verSector"><span>Mapa</span></a></li>
+        <!-- <li><a class="codrops-icon codrops-icon-drop" href=""><span>Salir</span></a></li> -->
+      </ul>
+    </div>
+  </nav>
+
+
+  
+
+  
+    <div>
+      <div ng-view="">
+          <main>
+        <h1>Bienvenido a GLAP</h1>
+        <input type="checkbox" id="cerrar">
+  <label for="cerrar" id="btn-cerrar">X</label>
+  <div class="modal">
+    <div class="contenido">
+      <h2>Visita nuestro blog</h2>
+      <li><a class="gn-icon gn-icon-myspace" href="/#!/abonados">Abonados</a></li>
+
+    </div>
+  </div>
+      </main>
       </div>
-      
-      
-    
-      
-    <!--===============================================================================================-->	
-      <script src="../libs/login/vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-      <script src="../libs/login/vendor/bootstrap/js/popper.js"></script>
-      <script src="../libs/login/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-      <script src="../libs/login/vendor/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
-      <script src="../libs/login/vendor/tilt/tilt.jquery.min.js"></script>
-      <script >
-        $('.js-tilt').tilt({
-          scale: 1.1
-        })
-      </script>
-    <!--===============================================================================================-->
-      <script src="../libs/login/js/main.js"></script>
-    
+    </div>
+  
+
+  <!-- /container -->
+  <script src="js/classie.js"></script>
+  <script src="js/gnmenu.js"></script>
+  <script>
+    new gnMenu(document.getElementById('gn-menu'));
+
+  </script>
+
+  <!-- Add your site or application content here -->
+
+
   <!-- <div>
     
     <div ng-view=""></div>
   
   </div> -->
 
+  <!--===============================================================================================-->
+
+  <!--===============================================================================================-->
 
 
   <!-- build:js(.) scripts/vendor.js -->
@@ -149,6 +133,8 @@
   <script src="libs/leaflet/leaflet.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+  <!-- scannerQR -->
+  <script type="text/javascript" src="libs/scanqr/instascan.min.js"></script>
 
 
   <!-- bower:js -->

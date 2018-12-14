@@ -58,8 +58,8 @@ module.exports.datastores = {
     host: 'localhost',
     user: 'postgres', // optional
     password: 'root', // optional
-    database: 'proyectoagua' //optional
-    //ssl: true
+    database: 'proyectoagua', //optional
+    //  ssl: 'true'
   },
 
 

@@ -18,6 +18,10 @@ module.exports = {
     valor_lectura:{
       type:"number",
     },
+    
+    valor_primera_lectura:{
+      type:"number",
+    },
 
     valor_consumo:{
       type:"number",

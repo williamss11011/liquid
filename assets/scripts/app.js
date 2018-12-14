@@ -105,6 +105,14 @@ angular.module('proyectoMenu', [
    
   })
   
+  .when('/RutaLector', {
+    templateUrl: 'views/RutaLector.html',
+    controller: 'RutaLectorCtrl',
+    controllerAs: 'RutaLectorCtrl',
+    abstract: true
+   
+  })
+  
   .otherwise({
     redirectTo: '/'
   });
