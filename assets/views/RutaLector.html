@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-  <h1>Nuevo Sector</h1>
+  <h1>Ruta Lector</h1>
   <div class="row">
     <div class="col-md-3">
       <div class="card border-secondary mb-3">
@@ -8,14 +8,14 @@
         <div class="card-body">
           <div class="form-group">
             <label class="col-form-label" for="inputDefault">Periodo</label>
-            <input type="month" class="form-control" placeholder="Mes">
+            <input type="month" class="form-control" placeholder="Mes" ng-model="rutaLector.periodo">
             <label class="col-form-label" for="inputDefault">Lector</label>
-                <select class="form-control">
-            <option>Seleccione un Lector</option>
+            <select class="form-control" ng-model="rutaLector.lector">
+              <option ng-repeat="item in listaLectores" ng-value="item">{{item.nombre}} {{item.apellido}}</option>
             </select>
           </div>
-          <button class="btn btn-primary ">Buscar</button>
-          <button type="button" class="btn btn-success ">Ver Ruta</button>
+          <button class="btn btn-primary btn-block" ng-click="obtenerSector()">Buscar</button>
+          <button type="button" class="btn btn-success btn-block" ng-click="verRuta()">Ver Ruta</button>
         </div>
       </div>
     </div>
@@ -26,8 +26,8 @@
         <div class="card-header">
           Mapa
         </div>
-        <div class="card-body">
-          <div id="mapid" style="height:64vh"></div>
+        <div>
+          <div id="mapid" style="height:74vh"></div>
         </div>
       </div>
     </div>

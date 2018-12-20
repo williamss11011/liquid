@@ -6,7 +6,7 @@ app.service('ServicioLectura', funcionServicioLectura);
 function funcionServicioLectura($q, $http) {
   //var ip = "192.168.1.4";
      var ip = "http://localhost:1337";
-     //var ip="https://eb83084b.ngrok.io";
+     //var ip="https://2cbb4248.ngrok.io";
 
   
   this.ingresarLectura = function (lectura) {

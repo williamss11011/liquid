@@ -7,7 +7,7 @@ app.service('ServicioUsuario', funcionServicioUsuario);
 function funcionServicioUsuario($q, $http){
   //var ip = "192.168.1.4";
    var ip = "http://localhost:1337";
-   //var ip="https://eb83084b.ngrok.io";
+   //var ip="https://2cbb4248.ngrok.io";
   
   this.ingresarUsuario = function(usuario){
     var defered = $q.defer();
@@ -38,6 +38,18 @@ function funcionServicioUsuario($q, $http){
     var defered = $q.defer();
     var promise = defered.promise;
     $http.get(ip+'/usuario').then(function(data){
+    //$http.get('https://7b1b773f.ngrok.io/usuario').then(function(data){
+      defered.resolve(data);
+    },function(err){
+      defered.reject(err);
+    });
+    return promise;
+  };
+
+  this.recuperarUsuarioporRol = function(rol){
+    var defered = $q.defer();
+    var promise = defered.promise;
+    $http.get(ip+'/usuario?rol='+rol).then(function(data){
     //$http.get('https://7b1b773f.ngrok.io/usuario').then(function(data){
       defered.resolve(data);
     },function(err){

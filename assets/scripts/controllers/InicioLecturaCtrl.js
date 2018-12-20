@@ -259,6 +259,7 @@ function funcionInicioLecturaCtrl($scope, $rootScope, $location, ServicioLectura
       buscarCuenta(content);
       obtenerLecturaAnterior(content);
     });
+    //let scanner = new Instascan.Scanner({ mirror: false });
     Instascan.Camera.getCameras().then(function (cameras) {
       if (cameras.length > 0) {
         
