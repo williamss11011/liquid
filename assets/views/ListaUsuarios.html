@@ -10,17 +10,18 @@
           <!-- formulario -->
 
           <div class="form-group">
-            <label class="col-form-label" for="inputDefault">Nombre</label>
-            <input type="text" class="form-control" placeholder="Nombre" ng-model="usuario.nombre">
+         <form action="" >
+            <label class="col-form-label" for="inputDefault" id="nombre">Nombre</label>
+            <input required type="text" class="form-control" placeholder="Nombre" ng-model="usuario.nombre">
           
-            <label class="col-form-label" for="inputDefault">Apellido</label>
+            <label required class="col-form-label" for="inputDefault">Apellido</label>
             <input type="text" class="form-control" placeholder="Apellido" ng-model="usuario.apellido">
 
             <label class="col-form-label" for="inputDefault">cedula</label>
-            <input type="text" class="form-control" placeholder="cedula" ng-model="usuario.cedula">
+            <input type="number" class="form-control" placeholder="cedula" ng-model="usuario.cedula">
 
             <label class="col-form-label" for="inputDefault">Telefono</label>
-            <input type="text" class="form-control" placeholder="Telefono" ng-model="usuario.telefono">
+            <input type="number" class="form-control" placeholder="Telefono" ng-model="usuario.telefono">
 
             <label class="col-form-label" for="inputDefault">Correo</label>
             <input type="text" class="form-control" placeholder="correo" ng-model="usuario.correo">
@@ -32,19 +33,24 @@
             <input type="text" class="form-control" placeholder="descripcion" ng-model="usuario.descripcion">
 
             <label class="col-form-label" for="inputDefault">Rol</label>
-            <input type="text" class="form-control" placeholder="rol" ng-model="usuario.rol">
+            <!-- <input type="text" class="form-control" placeholder="rol" ng-model="usuario.rol"> -->
+            <select class="form-control" ng-model="usuario.rol">
+              <option value="0">Administrador</option>
+              <option value="1">Lector</option>
+
+            </select>
 
             <label class="col-form-label" for="inputDefault">Sector</label>
             <select class="form-control" ng-model="usuario.sector_id">
               <option ng-repeat="sector in ListaSectores" ng-value="sector.id">{{sector.nombre}}</option>
             </select>
-
+        </form>
 
           </div>
 
-          <button type="button" class="btn btn-success" ng-click="guardarUsuario()">Guardar</button>
+          <button type="submit" class="btn btn-success" ng-click="guardarUsuario()" onsubmit="return validarFormulario()">Guardar</button>
           <button type="button" class="btn btn-danger" ng-click="regresar()">Cancelar</button>
-
+          
         </div>
       </div>
     </div>
@@ -243,3 +249,28 @@
     </div>
   </div>
 </div>
+
+<script>
+    
+  function validarFormulario(){
+ 
+    var txtNombre = document.getElementById('nombre').value;
+    
+ 
+    var banderaRBTN = false;
+ 
+    //Test campo obligatorio
+    if(txtNombre == null || txtNombre.length == 0 || /^\s+$/.test(txtNombre)){
+      alert('ERROR: El campo nombre no debe ir vacío o lleno de solamente espacios en blanco');
+      return false;
+    }
+ 
+    if(!banderaRBTN){
+      alert('ERROR: Debe elegir una opción de radio button');
+      return false;
+    }
+ 
+    return true;
+  }
+ 
+  </script>

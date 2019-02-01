@@ -6,7 +6,7 @@ app.service('ServicioAbonado', funcionServicioAbonado);
 function funcionServicioAbonado($q, $http){
   //var ip = "192.168.1.4";
    var ip = "http://localhost:1337";
-   //var ip="https://2cbb4248.ngrok.io";
+   //var ip="https://ac5ccb65.ngrok.io";
   this.ingresarAbonado = function(abonado){
     var defered = $q.defer();
     var promise = defered.promise;

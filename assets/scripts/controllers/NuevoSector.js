@@ -99,7 +99,7 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
     console.log(JSON.stringify($scope.drawPolygon));
     console.log($scope.sector);
     ServicioSector.ingresarSector($scope.sector).then(function (res) {
-      alert("ingreso Correcto");
+      alert("Ingreso Correcto");
       restartMap();
       $scope.sector = {};
       $('#myModal');
@@ -107,7 +107,7 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
 
     }, function (err) {
       console.log(err)
-      alert("ingreso fallido");
+      alert("Ingreso fallido");
 
     })
 
@@ -150,7 +150,7 @@ function funcionNuevoSectorCtrl($scope, $rootScope, ServicioSector) {
       info.update = function (props) {
         this._div.innerHTML = '<h4>SECTOR</h4>' + (props ?
           '<b>' + props.nombre + '</b><br />' + props.descripcion  :
-          'Seleccione un Sector para ver su información');
+          'Seleccione un sector para ver su información');
       };
 
       info.addTo($scope.mymap);

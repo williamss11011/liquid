@@ -4,7 +4,18 @@
   <h1>Gestión De Cuentas</h1>
   <div class="card border-secondary mb-3">
     <div class="card-header align-content-end">
-      <button class="btn btn-success btn-sm " ng-click="irNuevacuenta()">Nueva Cuenta</button>
+        <div class="row">
+            <div class="col-md-9">
+                <button class="btn btn-success btn-lg" ng-click="irNuevacuenta()">Nueva Cuenta</button>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" placeholder="Buscar Registro" ng-model="buscar">
+            </div>
+        </div>
+      
+      <!-- <input type="text" ng-model="buscar"> -->
+      <!-- <input class = "mr-sm-2" control de formulario = tipo = "texto" placeholder = "Buscar"> -->
+      
 
     </div>
     <div class="card-body">
@@ -26,7 +37,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="item in listaCuentas">
+            <tr ng-repeat="item in listaCuentas | filter:buscar | orderBy:'+abonado_id.nombre'">
               <td>{{item.abonado_id.nombre}} {{item.abonado_id.apellido}}</td>
               <td>{{item.abonado_id.cedula}}</td>
               <td>{{item.sector_id.nombre}}</td>

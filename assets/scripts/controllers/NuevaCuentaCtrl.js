@@ -218,13 +218,13 @@ function funcionNuevaCuenta($scope, $rootScope, ServicioSector, ServicioAbonado,
     $scope.Cuenta.abonado_id = parseInt($scope.Cuenta.abonado_id);
     $scope.Cuenta.coordenada = JSON.stringify($scope.CrearMarcador);
     ServicioCuentas.ingresarCuentas($scope.Cuenta).then(function (res) {
-      alert("ingreso Correcto");
+      alert("Ingreso Correcto");
       restartMap();
       $scope.Cuenta = {};
 
     }, function (err) {
       console.log(err)
-      alert("ingreso fallido");
+      alert("Ingreso fallido");
 
     })
   }

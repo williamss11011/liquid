@@ -36,6 +36,10 @@ module.exports = {
       type:"string",
     },
     
+    intentos:{
+      type:"number",
+    },
+    
     estado:{
       type:"string",
     },

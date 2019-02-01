@@ -11,11 +11,11 @@ function funcionUsuariosCtrl ($scope, $rootScope, $location, ServicioUsuario,Ser
   $scope.guardarUsuario=function()
   {
     ServicioUsuario.ingresarUsuario($scope.usuario).then(function(res){
-    alert("ingreso Correcto");
+    alert("Ingreso Correcto");
     obtenerUsuarios();
     }, function(err){
          console.log(err)
-         alert("ingreso fallido");
+         alert("Ingreso Fallido");
     
     })
   };
@@ -57,11 +57,11 @@ $scope.regresar=function()
 $scope.actualizarUsuario=function()
   {
     ServicioUsuario.actualizarUsuario($scope.usuarioseleccionado).then(function(res){
-    alert("El registro se ha actualizo correctamente");
+    alert("El registro se actualizó correctamente");
     obtenerUsuarios();
     }, function(err){
          console.log(err)
-         alert("actualizacion fallida");
+         alert("Actualización Fallida");
     
     })
   };
@@ -70,7 +70,7 @@ $scope.actualizarUsuario=function()
   $scope.BorrarUsuario=function()
   {
     ServicioUsuario.eliminarUsuario($scope.usuarioseleccionado).then(function(res){
-    alert("El registro se Borro correctamente");
+    alert("El registro se borró correctamente");
     obtenerUsuarios();
     }, function(err){
          console.log(err)

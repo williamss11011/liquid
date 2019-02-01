@@ -11,11 +11,11 @@ function funcionAbonadosCtrl ($scope, $rootScope, $location, ServicioAbonado){
   $scope.guardarAbonado=function()
   {
     ServicioAbonado.ingresarAbonado($scope.abonado).then(function(res){
-    alert("ingreso Correcto");
+    alert("Ingreso Correcto");
     obtenerAbonados();
     }, function(err){
          console.log(err)
-         alert("ingreso fallido");
+         alert("Ingreso Fallido");
     
     })
   };
@@ -61,7 +61,7 @@ $scope.actualizarAbonado=function()
     obtenerAbonados();
     }, function(err){
          console.log(err)
-         alert("actualizacion fallida");
+         alert("Actualización Fallida");
     
     })
   };
@@ -70,7 +70,7 @@ $scope.actualizarAbonado=function()
   $scope.BorrarAbonado=function()
   {
     ServicioAbonado.eliminarAbonado($scope.abonadoseleccionado).then(function(res){
-    alert("El registro se Borro correctamente");
+    alert("El registro se Borró correctamente");
     obtenerAbonados();
     }, function(err){
          console.log(err)

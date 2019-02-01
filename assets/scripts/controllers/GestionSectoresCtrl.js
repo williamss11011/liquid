@@ -46,7 +46,7 @@ $scope.actualizarsector=function(item)
   $scope.BorrarSector=function()
   {
     ServicioSector.eliminarSector($scope.sectorseleccionado).then(function(res){
-    alert("El registro se Borro correctamente");
+    alert("El registro se borró correctamente");
     obtenerSectores();
     }, function(err){
          console.log(err)

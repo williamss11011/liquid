@@ -131,7 +131,7 @@ function funcionRutaLectorCtrl($scope, $rootScope, $location,  ServicioUsuario, 
           '<h6> <b>Abonado: </b>' + props.nombre + ' ' + props.apellido + '</h6>' +
           '<h6> <b>Estado: </b>' + props.estado + '<br/>' :
           
-          'Seleccione un Marcador para ver su información');
+          'Seleccione un marcador para ver su información');
       };
 
       info.addTo($scope.mymap);

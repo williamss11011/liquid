@@ -14,11 +14,11 @@ function funcionActualizarSectoresCtrl($scope, $rootScope, $location, ServicioSe
 
   $scope.actualizarSector = function () {
     ServicioSector.actualizarSector($scope.sectorseleccionado).then(function (res) {
-      alert("El registro se ha actualizo correctamente");
+      alert("El registro se ha actualizó correctamente");
       $location.path('/Sector/GestionSectores');
     }, function (err) {
       console.log(err)
-      alert("actualizacion fallida");
+      alert("Actualización Fallida");
 
     })
   };

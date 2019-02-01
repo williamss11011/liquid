@@ -10,7 +10,7 @@
           <div class="form-group">
             <label class="col-form-label" for="inputDefault">Abonado</label>
             <select class="form-control" ng-model="Cuenta.abonado_id">
-              <option ng-repeat="abonado in ListaAbonados" ng-value="abonado.id">{{abonado.nombre}}</option>
+              <option ng-repeat="abonado in ListaAbonados" ng-value="abonado.id">{{abonado.nombre}} {{abonado.apellido}}</option>
             </select>
 
             <label class="col-form-label" for="inputDefault">Sectores</label>
@@ -28,7 +28,14 @@
 
 
             <label class="col-form-label" for="inputDefault">Marca de medidor</label>
-            <input type="text" class="form-control" placeholder="Marca de medidor" ng-model="Cuenta.marca_medidor">
+            <!-- <input type="text" class="form-control" placeholder="Marca de medidor" ng-model="Cuenta.marca_medidor"> -->
+            <select class="form-control" ng-model="Cuenta.marca_medidor">
+              <option value="IMDIM-MP15">IMDIM-MP15</option>
+              <option value="IMDIM-MP20">IMDIM-MP20</option>
+              <option value="IMDIM-MP25">IMDIM-MP25</option>
+              <option value="JYH-ST20">JYH-ST20</option>
+              <option value="JYH-ST25">JYH-ST25</option>
+            </select>
 
             <label class="col-form-label" for="inputDefault">Direccion</label>
             <input type="text" class="form-control" placeholder="Direccion" ng-model="Cuenta.direccion">

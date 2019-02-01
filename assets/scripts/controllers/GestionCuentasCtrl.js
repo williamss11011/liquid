@@ -48,7 +48,7 @@ $scope.actualizarcuentas=function(item)
   $scope.BorrarCuentas=function()
   {
     ServicioCuentas.eliminarCuentas($scope.cuentaseleccionada).then(function(res){
-    alert("El registro se Borro correctamente");
+    alert("El registro se borró correctamente");
     obtenerCuentas();
     }, function(err){
          console.log(err)

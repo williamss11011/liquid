@@ -4,7 +4,15 @@
   <h1>Gestión De Sectores</h1>
   <div class="card border-secondary mb-3">
     <div class="card-header align-content-end">
-      <button class="btn btn-success btn-sm " ng-click="irNuevosector()">Nuevo Sector</button>
+      <div class="row">
+        <div class="col-md-9">
+            <button class="btn btn-success btn-lg " ng-click="irNuevosector()">Nuevo Sector</button>
+
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" placeholder="Buscar Registro" ng-model="buscar">
+        </div>
+      </div>
       
     </div>
     <div class="card-body">
@@ -23,7 +31,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="item in listaSectores">
+          <tr ng-repeat="item in listaSectores | filter:buscar | orderBy:'+nombre'">
             <td>{{item.nombre}}</td>
             <td>{{item.descripcion}}</td>
             <td><input type="color" ng-model="item.color" disabled="true"> </td>

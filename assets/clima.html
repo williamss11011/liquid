@@ -1,0 +1,4142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Clima Ecuador</title>
+  <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous">
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+  <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css" />
+</head>
+
+<body>
+
+  <!-- <input id="city"></input> -->
+  <!-- <button id="getWeatherForcast">Obtener Clima</button> -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card border-secondary mb-3">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-md-4">
+                <h4>Mapa Climático Ecuador</h4>
+              </div>
+              <div class="col-md-3"></div>
+              <div class="col-md-5">
+                  <button id="getTemp">Temperatura</button>
+                  <button id="getNubo">Nubosidad</button>
+                  <button id="getHume">Humedad</button>
+                  <button id="getPres">Presion</button>
+                  <button id="getVi">Viento</button>
+                  <button id="getAll">Todo</button>
+              </div>
+            </div>
+            
+            
+            <!-- <button id="getWeatherForcast">B1</button>
+            <button id="getWeatherForcastnube">B2</button> -->
+
+            
+          </div>
+          <div class="card-body" style="background-image: url('ecuator.jpg'); width: 100%; height: 1280px; ">
+
+            <div class="row">
+              <div class="col-md-2" id="showWeatherForcast">.</div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+            </div>
+            <!-- fila -->
+
+            <div class="row">
+              <div class="col-md-2" id="showWeatherForcast2">.</div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Desmeraldas">
+                <h5>Esmeraldas </h5>
+              </div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dtulcan">
+                <h5>Tulcan </h5>
+              </div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+              <div class="col-md-2"><h5>.</h5></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+              </div>
+
+            <div class="row">
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dibarra">
+                <h5>Ibarra </h5>
+              </div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+              </div>
+
+            <div class="row">
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dnl">
+                <h5>Coca </h5>
+              </div>
+              <div class="col-md-2">.</div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dquito">
+                <h5>Quito</h5>
+              </div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2"><h5>.</h5></div>
+                    <div class="col-md-2"><h5>.</h5></div>
+                    <div class="col-md-2"><h5>.</h5></div>
+                    <div class="col-md-2"><h5>.</h5></div>
+                    <div class="col-md-2"><h5>.</h5></div>
+                    <div class="col-md-2"><h5>.</h5></div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                    </div>
+
+            <div class="row">
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dlata">
+                <h5>Latacunga</h5>
+              </div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-2" style="color: whitesmoke;" id="Dmanta">
+                <h5>Manta </h5>
+              </div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dquevedo">
+                <h5>Quevedo </h5>
+              </div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dtena">
+                <h5>Tena </h5>
+              </div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">.</div>
+                <div class="col-md-2">.</div>
+                <div class="col-md-2" style="color: whitesmoke;" id="Dambato">
+                  <h5>Ambato</h5>
+                </div>
+                <div class="col-md-2">.</div>
+                <div class="col-md-2">.</div>
+                <div class="col-md-2">.</div>
+              </div>
+
+            <div class="row">
+              <div class="col-md-2">.</div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dguaranda">
+                <h5>Guaranda </h5>
+              </div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dpuyo">
+                <h5>Puyo</h5>
+              </div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">.</div>
+                <div class="col-md-2">.</div>
+                <div class="col-md-2" style="color: whitesmoke;" id="Driobamba">
+                  <h5>Riobamba</h5>
+                </div>
+                <div class="col-md-2">.</div>
+                <div class="col-md-2">.</div>
+                <div class="col-md-2">.</div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2"><h5>.</h5></div>
+                    <div class="col-md-2"><h5>.</h5></div>
+                    <div class="col-md-2"><h5>.</h5></div>
+                    <div class="col-md-2"><h5>.</h5></div>
+                    <div class="col-md-2"><h5>.</h5></div>
+                    <div class="col-md-2"><h5>.</h5></div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><h5>.</h5></div>
+                        <div class="col-md-2"><h5>.</h5></div>
+                        <div class="col-md-2"><h5>.</h5></div>
+                        <div class="col-md-2"><h5>.</h5></div>
+                        <div class="col-md-2"><h5>.</h5></div>
+                        <div class="col-md-2"><h5>.</h5></div>
+                      </div>
+
+            
+
+
+                <div class="row">
+                    <div class="col-md-2"style="color: whitesmoke;" id="Dsalinas">
+                      <h5>Salinas</h5>
+                    </div>
+                    <div class="col-md-2">.</div>
+                    <div class="col-md-2">.</div>
+                    <div class="col-md-2">.</div>
+                    <div class="col-md-2">.</div>
+                    <div class="col-md-2">.</div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                      <div class="col-md-2"><h5>.</h5></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><h5>.</h5></div>
+                        <div class="col-md-2"><h5>.</h5></div>
+                        <div class="col-md-2"><h5>.</h5></div>
+                        <div class="col-md-2"><h5>.</h5></div>
+                        <div class="col-md-2"><h5>.</h5></div>
+                        <div class="col-md-2"><h5>.</h5></div>
+                      </div>
+
+            <div class="row">
+                <div class="col-md-2">.</div>
+                <div class="col-md-2" style="color: whitesmoke;" id="Dguay">
+                  <h5>Guayaquil</h5>
+                </div>
+                <div class="col-md-2">.</div>
+                <div class="col-md-2">.</div>
+                <div class="col-md-2">.</div>
+                <div class="col-md-2">.</div>
+              </div>
+
+            <div class="row">
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dmacas">
+                <h5>Macas </h5>
+              </div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dcanar">
+                <h5>Cañar </h5>
+              </div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dazogues">
+                <h5>Azogues </h5>
+              </div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-2">.</div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dmachala">
+                <h5>Machala </h5>
+              </div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dcuenca">
+                <h5>Cuenca </h5>
+              </div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+                <div class="col-md-2"><h5>.</h5></div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                  <div class="col-md-2"><h5>.</h5></div>
+                </div>
+
+
+            <div class="row">
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2" style="color: whitesmoke;" id="Dloja">
+                <h5>Loja </h5>
+              </div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+              <div class="col-md-2">.</div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="showWeatherForcast"></div>
+  <div id="showWeatherForcast2"></div>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#getWeatherForcast").click(function () {
+        var city = $("#city").val();
+        var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+        $.ajax({
+          url: 'http://api.openweathermap.org/data/2.5/weather',
+          dataType: 'json',
+          type: 'GET',
+
+          data: {
+            lang: 'es',
+            q: 'london',
+            appid: key,
+            units: 'metric'
+          },
+
+          success: function (data) {
+            var wf = '';
+            $.each(data.weather, function (index, val) {
+              wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+                '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+                .pressure +
+                ' | ' + data.wind.speed + ' | '
+            });
+            $("#showWeatherForcast").html(wf);
+          }
+        });
+      });
+    });
+
+  </script>
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#getWeatherForcast").click(function () {
+        var city = $("#city").val();
+        var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+        $.ajax({
+          url: 'http://api.openweathermap.org/data/2.5/weather',
+          dataType: 'json',
+          type: 'GET',
+
+          data: {
+            lang: 'es',
+            q: 'Quito',
+            appid: key,
+            units: 'metric'
+          },
+
+          success: function (data) {
+            var wf = '';
+            $.each(data.weather, function (index, val) {
+              wf += '<p><b>' + data.name + "</b><img src=" + val.icon + ".png></p>" + data.main.temp +
+                '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+                .pressure +
+                ' | ' + data.wind.speed + ' | '
+            });
+            $("#showWeatherForcast2").html(wf);
+          }
+        });
+      });
+    });
+
+  </script>
+
+
+  <!-- cambio de boton -->
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#getWeatherForcastnube").click(function () {
+        var city = $("#city").val();
+        var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+        $.ajax({
+          url: 'http://api.openweathermap.org/data/2.5/weather',
+          dataType: 'json',
+          type: 'GET',
+
+          data: {
+            lang: 'es',
+            q: 'london',
+            appid: key,
+            units: 'metric'
+          },
+
+          success: function (data) {
+            var wf = '';
+            $.each(data.weather, function (index, val) {
+              wf += '<p><b>' + data.name + data.wind.speed + ' | '
+            });
+            $("#showWeatherForcast").html(wf);
+          }
+        });
+      });
+    });
+
+  </script>
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#getWeatherForcastnube").click(function () {
+        var city = $("#city").val();
+        var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+        $.ajax({
+          url: 'http://api.openweathermap.org/data/2.5/weather',
+          dataType: 'json',
+          type: 'GET',
+
+          data: {
+            lang: 'es',
+            q: 'Quito',
+            appid: key,
+            units: 'metric'
+          },
+
+          success: function (data) {
+            var wf = '';
+            $.each(data.weather, function (index, val) {
+              wf += '<p><b>' + data.name + data.wind.speed + ' | '
+            });
+            $("#showWeatherForcast2").html(wf);
+          }
+        });
+      });
+    });
+
+  </script>
+
+  <!-- esmeraldas -->
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#getTemp").click(function () {
+        var city = $("#city").val();
+        var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+        $.ajax({
+          url: 'http://api.openweathermap.org/data/2.5/weather',
+          dataType: 'json',
+          type: 'GET',
+          data: {
+            lang: 'es',
+            q: 'ESMERALDAS',
+            appid: key,
+            units: 'metric'
+          },
+          success: function (data) {
+            var wf = '';
+            $.each(data.weather, function (index, val) {
+              wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+                '&deg;C' + ' | ' 
+            });
+            $("#Desmeraldas").html(wf);
+          }
+        });
+      });
+    });
+  </script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getNubo").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'ESMERALDAS',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+          });
+          $("#Desmeraldas").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getHume").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'ESMERALDAS',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+          });
+          $("#Desmeraldas").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getPres").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'ESMERALDAS',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main
+              .pressure +
+              ' hPa ' 
+          });
+          $("#Desmeraldas").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getVi").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'ESMERALDAS',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+          });
+          $("#Desmeraldas").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getAll").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'ESMERALDAS',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+              .pressure +
+              ' | ' + data.wind.speed + ' | '
+          });
+          $("#Desmeraldas").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+
+
+  <!-- Tulcan -->
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#getTemp").click(function () {
+        var city = $("#city").val();
+        var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+        $.ajax({
+          url: 'http://api.openweathermap.org/data/2.5/weather',
+          dataType: 'json',
+          type: 'GET',
+          data: {
+            lang: 'es',
+            q: 'Tulcan',
+            appid: key,
+            units: 'metric'
+          },
+          success: function (data) {
+            var wf = '';
+            $.each(data.weather, function (index, val) {
+              wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+                '&deg;C' + ' | ' 
+            });
+            $("#Dtulcan").html(wf);
+          }
+        });
+      });
+    });
+  </script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getNubo").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'Tulcan',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+          });
+          $("#Dtulcan").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getHume").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'Tulcan',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+          });
+          $("#Dtulcan").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getPres").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'tulcan',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main
+              .pressure +
+              ' hPa ' 
+          });
+          $("#Dtulcan").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getVi").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'tulcan',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+          });
+          $("#Dtulcan").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getAll").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'tulcan',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+              .pressure +
+              ' | ' + data.wind.speed + ' | '
+          });
+          $("#Dtulcan").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+
+  <!-- Ibarra -->
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#getTemp").click(function () {
+        var city = $("#city").val();
+        var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+        $.ajax({
+          url: 'http://api.openweathermap.org/data/2.5/weather',
+          dataType: 'json',
+          type: 'GET',
+          data: {
+            lang: 'es',
+            q: 'Ibarra',
+            appid: key,
+            units: 'metric'
+          },
+          success: function (data) {
+            var wf = '';
+            $.each(data.weather, function (index, val) {
+              wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+                '&deg;C' + ' | ' 
+            });
+            $("#Dibarra").html(wf);
+          }
+        });
+      });
+    });
+  </script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getNubo").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'Ibarra',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+          });
+          $("#Dibarra").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getHume").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'Ibarra',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+          });
+          $("#Dibarra").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getPres").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'ibarra',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main
+              .pressure +
+              ' hPa ' 
+          });
+          $("#Dibarra").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getVi").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'ibarra',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+          });
+          $("#Dibarra").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getAll").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'ibarra',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+              .pressure +
+              ' | ' + data.wind.speed + ' | '
+          });
+          $("#Dibarra").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+  <!-- Nueva Loja -->
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#getTemp").click(function () {
+        var city = $("#city").val();
+        var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+        $.ajax({
+          url: 'http://api.openweathermap.org/data/2.5/weather',
+          dataType: 'json',
+          type: 'GET',
+          data: {
+            lang: 'es',
+            q: 'coca',
+            appid: key,
+            units: 'metric'
+          },
+          success: function (data) {
+            var wf = '';
+            $.each(data.weather, function (index, val) {
+              wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+                '&deg;C' + ' | ' 
+            });
+            $("#Dnl").html(wf);
+          }
+        });
+      });
+    });
+  </script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getNubo").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'coca',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+          });
+          $("#Dnl").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getHume").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'coca',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+          });
+          $("#Dnl").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getPres").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'coca',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main
+              .pressure +
+              ' hPa ' 
+          });
+          $("#Dnl").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getVi").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'coca',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+          });
+          $("#Dnl").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getAll").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'coca',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+              .pressure +
+              ' | ' + data.wind.speed + ' | '
+          });
+          $("#Dnl").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+  <!-- Quito -->
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#getTemp").click(function () {
+        var city = $("#city").val();
+        var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+        $.ajax({
+          url: 'http://api.openweathermap.org/data/2.5/weather',
+          dataType: 'json',
+          type: 'GET',
+          data: {
+            lang: 'es',
+            q: 'quito',
+            appid: key,
+            units: 'metric'
+          },
+          success: function (data) {
+            var wf = '';
+            $.each(data.weather, function (index, val) {
+              wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+                '&deg;C' + ' | ' 
+            });
+            $("#Dquito").html(wf);
+          }
+        });
+      });
+    });
+  </script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getNubo").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'quito',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+          });
+          $("#Dquito").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getHume").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'quito',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+          });
+          $("#Dquito").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getPres").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'quito',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main
+              .pressure +
+              ' hPa ' 
+          });
+          $("#Dquito").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getVi").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'quito',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+          });
+          $("#Dquito").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getAll").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'quito',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+              .pressure +
+              ' | ' + data.wind.speed + ' | '
+          });
+          $("#Dquito").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<!-- Latacunga -->
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'latacunga',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dlata").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'latacunga',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dlata").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'latacunga',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dlata").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'latacunga',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dlata").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'latacunga',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dlata").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'latacunga',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dlata").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<!-- manta -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'Manta',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dmanta").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Manta',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dmanta").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Manta',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dmanta").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Manta',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dmanta").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Manta',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dmanta").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Manta',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dmanta").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<!-- Quevedo -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'quevedo',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dquevedo").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'quevedo',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dquevedo").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'quevedo',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dquevedo").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'quevedo',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dquevedo").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'quevedo',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dquevedo").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'quevedo',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dquevedo").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<!-- Ambato -->
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'ambato',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dambato").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'ambato',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dambato").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'ambato',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dambato").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'ambato',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dambato").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'ambato',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dambato").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'ambato',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dambato").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<!-- tena -->
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'Tena',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dtena").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Tena',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dtena").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Tena',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dtena").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Tena',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dtena").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Tena',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dtena").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Tena',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dtena").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<!-- Guaranda -->
+
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'guaranda',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dguaranda").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'guaranda',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dguaranda").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'guaranda',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dguaranda").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'guaranda',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dguaranda").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'guaranda',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dguaranda").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'guaranda',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dguaranda").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<!-- Riobamba -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'riobamba',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Driobamba").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'riobamba',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Driobamba").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'riobamba',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Driobamba").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'riobamba',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Driobamba").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'riobamba',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Driobamba").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'riobamba',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Driobamba").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<!-- Puyo -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'puyo',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dpuyo").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'puyo',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dpuyo").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'puyo',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dpuyo").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'puyo',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dpuyo").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'puyo',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dpuyo").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'puyo',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dpuyo").html(wf);
+      }
+    });
+  });
+});
+</script>
+<!-- salinas -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'SALINAS',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dsalinas").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'SALINAS',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dsalinas").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'SALINAS',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dsalinas").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'SALINAS',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dsalinas").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'SALINAS',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dsalinas").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'SALINAS',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dsalinas").html(wf);
+      }
+    });
+  });
+});
+</script>
+<!-- Guayaquil -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'Guayaquil',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dguay").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Guayaquil',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dguay").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Guayaquil',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dguay").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Guayaquil',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dguay").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Guayaquil',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dguay").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Guayaquil',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dguay").html(wf);
+      }
+    });
+  });
+});
+</script>
+<!-- cañar  -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'canar',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dcanar").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Canar',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dcanar").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Canar',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dcanar").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Canar',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dcanar").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Canar',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dcanar").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Canar',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dcanar").html(wf);
+      }
+    });
+  });
+});
+</script>
+<!-- macas -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'Macas',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dmacas").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Macas',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dmacas").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Macas',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dmacas").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Macas',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dmacas").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Macas',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dmacas").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Macas',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dmacas").html(wf);
+      }
+    });
+  });
+});
+</script>
+<!-- Azogues -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'Azogues',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dazogues").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Azogues',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dazogues").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Azogues',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dazogues").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Azogues',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dazogues").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Azogues',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dazogues").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Azogues',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dazogues").html(wf);
+      }
+    });
+  });
+});
+</script>
+<!-- Machala -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'Machala',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dmachala").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Machala',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dmachala").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Machala',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dmachala").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Machala',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dmachala").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Machala',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dmachala").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Machala',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dmachala").html(wf);
+      }
+    });
+  });
+});
+</script>
+<!-- Cuenca -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'Cuenca',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dcuenca").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Cuenca',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dcuenca").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Cuenca',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dcuenca").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Cuenca',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dcuenca").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Cuenca',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dcuenca").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Cuenca',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dcuenca").html(wf);
+      }
+    });
+  });
+});
+</script>
+<!-- loja -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#getTemp").click(function () {
+      var city = $("#city").val();
+      var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+      $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          lang: 'es',
+          q: 'Loja',
+          appid: key,
+          units: 'metric'
+        },
+        success: function (data) {
+          var wf = '';
+          $.each(data.weather, function (index, val) {
+            wf += '<h5><b>' + data.name + ' : ' + data.main.temp +
+              '&deg;C' + ' | ' 
+          });
+          $("#Dloja").html(wf);
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getNubo").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Loja',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + val.description  + ' | '
+        });
+        $("#Dloja").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getHume").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Loja',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.main.humidity +  ' % '
+        });
+        $("#Dloja").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getPres").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Loja',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : ' + data.main
+            .pressure +
+            ' hPa ' 
+        });
+        $("#Dloja").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getVi").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Loja',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<h5><b>' + data.name + ' : '  + data.wind.speed + ' m/seg '
+        });
+        $("#Dloja").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#getAll").click(function () {
+    var city = $("#city").val();
+    var key = 'b42fdddc7e22277f19748e48ccf2c82f';
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        lang: 'es',
+        q: 'Loja',
+        appid: key,
+        units: 'metric'
+      },
+      success: function (data) {
+        var wf = '';
+        $.each(data.weather, function (index, val) {
+          wf += '<p><b>' + data.name + ' : ' + data.main.temp +
+            '&deg;C' + ' | ' + val.description + ' | ' + data.main.humidity + ' | ' + data.main
+            .pressure +
+            ' | ' + data.wind.speed + ' | '
+        });
+        $("#Dloja").html(wf);
+      }
+    });
+  });
+});
+</script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+  <script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js"></script>
+</body>
+
+</html>

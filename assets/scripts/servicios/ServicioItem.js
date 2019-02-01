@@ -5,8 +5,8 @@ app.service('ServicioItem', funcionServicioItem);
 
 function funcionServicioItem($q, $http){
   //var ip = "192.168.1.4";
- var ip="https://2cbb4248.ngrok.io";
-   //var ip = "http://localhost:1337";
+ //var ip="https://2cbb4248.ngrok.io";
+   var ip = "https://b7429108.ngrok.io";
 
    
   this.ingresarUsuario = function(usuario){

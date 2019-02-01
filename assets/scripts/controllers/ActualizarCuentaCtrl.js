@@ -28,11 +28,11 @@ function funcionActualizarCuentaCtrl($scope, $rootScope, $location, ServicioSect
     $scope.cuentaseleccionada.sector_id = parseInt(sector_id);
     $scope.cuentaseleccionada.abonado_id = parseInt(abonado_id);
     ServicioCuentas.actualizarCuentas($scope.cuentaseleccionada).then(function (res) {
-      alert("El registro se ha actualizo correctamente");
+      alert("El registro se ha actualizó correctamente");
       $location.path('/Cuentas/GestionCuentas');
     }, function (err) {
       console.log(err)
-      alert("actualizacion fallida");
+      alert("Actualización Fallida");
 
     })
   };

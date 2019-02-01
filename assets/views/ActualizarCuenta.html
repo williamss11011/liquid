@@ -27,7 +27,14 @@
             
             
                         <label class="col-form-label" for="inputDefault">Marca de medidor</label>
-                        <input type="text" class="form-control" placeholder="Marca de medidor" ng-model="cuentaseleccionada.marca_medidor">
+                        <!-- <input type="text" class="form-control" placeholder="Marca de medidor" ng-model="cuentaseleccionada.marca_medidor"> -->
+                        <select class="form-control" ng-model="cuentaseleccionada.marca_medidor">
+                          <option value="IMDIM-MP15">IMDIM-MP15</option>
+                          <option value="IMDIM-MP20">IMDIM-MP20</option>
+                          <option value="IMDIM-MP25">IMDIM-MP25</option>
+                          <option value="JYH-ST20">JYH-ST20</option>
+                          <option value="JYH-ST25">JYH-ST25</option>
+                        </select>
             
                         <label class="col-form-label" for="inputDefault">Direccion</label>
                         <input type="text" class="form-control" placeholder="Direccion" ng-model="cuentaseleccionada.direccion">

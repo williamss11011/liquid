@@ -15,6 +15,7 @@ function funcionInicioLecturaCtrl($scope, $rootScope, $location, ServicioLectura
   $scope.mymap = {};
   $scope.lectura = {};
   $scope.lectura.tip = "leido";
+  $scope.lecturaAuxiliar=0;
 
   $scope.lecturaAnterior = {};
   $scope.lecturasIngresadas = [];
@@ -196,7 +197,10 @@ function funcionInicioLecturaCtrl($scope, $rootScope, $location, ServicioLectura
     })
   }
 
+  $scope.validarLectura = function()
+  {
 
+  }
 
   function initMap(position) {
     lat = "-0.169350";
@@ -305,7 +309,34 @@ function funcionInicioLecturaCtrl($scope, $rootScope, $location, ServicioLectura
     ServicioCuentas.buscarPorId(idcuenta).then(function (res) {
       $scope.cuentaLeida = res.data;
       console.log("Cuenta: ")
-      console.log($scope.cuentaLeida)
+      console.log($scope.cuentaLeida);
+      console.log("111111111111111111111111111111");
+      
+      if($scope.cuentaLeida.lectura.length > 0){
+
+        var aux = $scope.cuentaLeida.lectura.length;
+        console.log("222222222222222222222222222222222");
+        console.log($scope.cuentaLeida.lectura[aux - 1].intentos);
+        
+        
+        if($scope.cuentaLeida.lectura[aux - 1].intentos >= 3){
+          alert("Ha exedido el numero de actualizaciones de lectura para la cuenta seleccionada. Intento 3/3.");
+          location.reload();
+        }
+      }
+      // if(primeraVez == 0){
+      //   console.log("Entro al primera vez");
+        
+      //   $scope.lectura.valor_primera_lectura = $scope.lecturaAnterior.valor_lectura;
+      //   if($scope.lecturaAnterior.valor_lectura != 0){
+      //     console.log("Entro al 2 if del valor anterior");
+      //     console.log( $scope.cuentaLeida.lectura[0].valor_lectura);
+          
+      //     $scope.lectura.valor_lectura = $scope.cuentaLeida.lectura[0].valor_lectura;
+      //     console.log($scope.lectura.valor_lectura);
+          
+      //   }
+      // }
     }, function (error) {
       console.log(error);
     })
@@ -316,9 +347,22 @@ function funcionInicioLecturaCtrl($scope, $rootScope, $location, ServicioLectura
     //TARIFA==> m3 comercial =0.75, industrial= 1,25 , residencial=0.50; publico=0.25;
     //(lectura -lectura anterior) * tarifa    
     // basico 3,50
-
+    console.log("FUNCINO CALCULO LECTURA");
+    
     if(primeraVez == 0){
+      console.log("Entro al primera vez");
+      
       $scope.lectura.valor_primera_lectura = $scope.lecturaAnterior.valor_lectura;
+      // if($scope.lecturaAnterior.valor_lectura != 0){
+      //   console.log("Entro al 2 if del valor anterior");
+        
+      //   $scope.lectura.valor_lectura = $scope.cuentaLeida.lectura[0].valor_lectura;
+      // }
+    }
+
+    if($scope.lectura.valor_lectura < $scope.lecturaAuxiliar){
+      alert("El valor de la nueva lectura no puede ser menor a la anterior.")
+      $scope.lectura.valor_lectura = $scope.lecturaAuxiliar;
     }
 
     var tarifa = $scope.cuentaLeida.tarifa;
@@ -371,27 +415,50 @@ console.log(consumo, costo);
 
   function obtenerLecturaAnterior(cuenta_id) {
     var periodo = moment(new Date(Date.now())).format("MM-YYYY");
+    var mes = periodo.toString().slice(0, 2)
     console.log("periodo")
     console.log(periodo)
+    var mes = Number(periodo.toString().slice(0, 2))
+    if(mes == 1){
+      console.log("@@@@@ ", periodo.toString().slice(3, 7), Number(periodo.toString().slice(3, 7)))
+      var anio =  Number(periodo.toString().slice(3, 7)) - 1
+      mes = 12;
+      periodo = mes.toString() + "-" + anio.toString()
+    } else {
+      mes = mes - 1
+      var anio =  Number(periodo.toString().slice(3, 7))   
+      periodo = mes.toString() + "-" + anio.toString()
+    }
+    console.log("Nuevo periodo" )
+    console.log(periodo,mes, anio )
     ServicioLectura.buscarPorPeriodoIdCuenta(periodo, cuenta_id).then(function (res) {
+      console.log  
+      console.log(res.data);
       $scope.lecturaAnterior = res.data;
       if ($scope.lecturaAnterior.length == 0) {
         $scope.lecturaAnterior.valor_lectura = 0;
         $scope.lectura.valor_lectura = 0;
         $scope.lectura.valor_pago = 0;
         $scope.lectura.valor_consumo = 0;
+        $scope.lectura.intentos = 0;
         $scope.lectura.ingreso = true;
       } else {
-        $scope.lecturaAnterior.valor_lectura = $scope.lecturaAnterior[0].valor_primera_lectura;
+        $scope.lecturaAnterior.valor_lectura = $scope.lecturaAnterior[0].valor_lectura;
         $scope.lectura.valor_lectura = $scope.lecturaAnterior[0].valor_lectura;
-        $scope.lectura.valor_pago = $scope.lecturaAnterior[0].valor_pago;
-        $scope.lectura.valor_consumo = $scope.lecturaAnterior[0].valor_consumo;
+        $scope.lectura.valor_pago = 0; //$scope.lecturaAnterior[0].valor_pago;
+        $scope.lectura.valor_consumo = 0;//$scope.lecturaAnterior[0].valor_consumo;
         $scope.lectura.observacion = $scope.lecturaAnterior[0].observacion;
+        $scope.lectura.intentos =  $scope.lecturaAnterior[0].intentos;
         // $scope.lectura.valor_primera_lectura = $scope.lecturaAnterior[0].valor_primera_lectura;
         $scope.lectura.ingreso = false;
+        console.log("++++++++++++++++++++++++++++++++++++++  SI TIENE VALORES ANTERIOES ",  $scope.lecturaAnterior[0].intentos);
+        
         console.log("test")
         console.log($scope.lecturaAnterior)
       }
+      console.log("ZZXZXZXZXZXZZXZX ", $scope.lectura.intentos);
+      
+      $scope.lecturaAuxiliar= $scope.lectura.valor_lectura;
       primeraVez = 0;
     }, function (error) {
       console.log(error);
@@ -413,14 +480,24 @@ console.log(consumo, costo);
     {
       if($scope.lectura.cuenta_id==lecturasIngresadas[i].cuenta_id.id)
       {
+        console.log("ANTES DEL IF DE VALIDACION: ", lecturasIngresadas[i].intentos);
+        
         $scope.lectura.id = lecturasIngresadas[i].id;
-        ServicioLectura.actualizarLectura($scope.lectura).then(function (res) {
-          alert("Actualizacion Correcta");
-          location.reload();
-        }, function (err) {
-          console.log(err)
-          alert("Actualizacion fallida");
-        })
+        if(lecturasIngresadas[i].intentos > 3){
+          alert("Ha exedido el numero de actualizaciones de lectura para la cuenta seleccionada. Intento 3/3.");
+        }else{
+          console.log("???????? aNTEs de sumar ", $scope.lectura.intentos);
+          
+          $scope.lectura.intentos = lecturasIngresadas[i].intentos + 1;
+          ServicioLectura.actualizarLectura($scope.lectura).then(function (res) {
+            alert("Actualizacion Correcta. Intento "+  $scope.lectura.intentos + "/3.");
+            location.reload();
+          }, function (err) {
+            console.log(err)
+            alert("Actualizacion fallida");
+          })
+        }
+       
         existe=true; 
         break;
       }
@@ -429,11 +506,11 @@ console.log(consumo, costo);
     if(existe==false)
     {
       ServicioLectura.ingresarLectura($scope.lectura).then(function (res) {
-        alert("ingreso Correcto");
+        alert("Ingreso Correcto");
         location.reload();
       }, function (err) {
         console.log(err)
-        alert("ingreso fallido");
+        alert("Ingreso fallido");
       })
     }
     
