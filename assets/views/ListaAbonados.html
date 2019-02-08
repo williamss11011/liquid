@@ -7,28 +7,29 @@
       <div class="card border-secondary mb-3">
         <div class="card-header">Nuevo Abonado</div>
         <div class="card-body">
+          <form action="" name="abonado">
           <!-- contenido -->
           <div class="form-group">
             <label class="col-form-label" for="inputDefault">Nombre</label>
-            <input required type="text" class="form-control" placeholder="Nombre" ng-model="abonado.nombre">
+            <input type="text" class="form-control" placeholder="Nombre" ng-model="abonado.nombre" required pattern="[A-Za-z]{4,15}" title="Ingrese al menos 4 caracteres no numericos, los simbolos no estan permitidos">
 
-            <label required class="col-form-label" for="inputDefault">Apellido</label>
-            <input type="text" class="form-control" placeholder="Apellido" ng-model="abonado.apellido">
+            <label class="col-form-label" for="inputDefault">Apellido</label>
+            <input type="text" class="form-control" placeholder="Apellido" ng-model="abonado.apellido" required pattern="[A-Za-z]{4,15}" title="Ingrese al menos 4 caracteres no numericos, los simbolos no estan permitidos">
 
             <label class="col-form-label" for="inputDefault">cedula</label>
-            <input type="number" class="form-control" placeholder="cedula" ng-model="abonado.cedula">
+            <input type="text" class="form-control" placeholder="cedula" ng-model="abonado.cedula" required pattern="[0-9]{10,10}" title="Requiere 10 digitos">
 
             <label class="col-form-label" for="inputDefault">Telefono</label>
-            <input type="number" class="form-control" placeholder="Telefono" ng-model="abonado.telefono">
+            <input type="text" class="form-control" placeholder="Telefono" ng-model="abonado.telefono" required pattern="[0-9]{7,15}" title="Solo caracteres numericos, al menos 7 digitos">
 
             <label class="col-form-label" for="inputDefault">Correo</label>
-            <input type="email" class="form-control" placeholder="correo" ng-model="abonado.correo">
+            <input type="email" class="form-control" placeholder="correo" ng-model="abonado.correo" required>
           
         </div>
-          <button type="submit" class="btn btn-success" ng-click="guardarAbonado()">Guardar</button>
+          <button type="submit" class="btn btn-success" ng-click="abonado.$valid && guardarAbonado()">Guardar</button>
           <button type="button" class="btn btn-danger" ng-click="regresar()">cancelar</button>
         
-
+        </form>
         </div>
       </div>
     </div>
@@ -168,6 +169,7 @@
 <div class="modal" id="EditarModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      <form action="" name="modalabo">
       <div class="modal-header">
         <h5 class="modal-title">Editar Abonado</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -179,26 +181,27 @@
 
         <div class="form-group">
           <label class="col-form-label" for="inputDefault">Nombre</label>
-          <input type="text" class="form-control" placeholder="Nombre" ng-model="abonadoseleccionado.nombre">
+          <input type="text" class="form-control" placeholder="Nombre" ng-model="abonadoseleccionado.nombre" required pattern="[A-Za-z]{4,15}" title="Ingrese al menos 4 caracteres no numericos, los simbolos no estan permitidos">
 
           <label class="col-form-label" for="inputDefault">Apellido</label>
-          <input type="text" class="form-control" placeholder="Apellido" ng-model="abonadoseleccionado.apellido">
+          <input type="text" class="form-control" placeholder="Apellido" ng-model="abonadoseleccionado.apellido" required pattern="[A-Za-z]{4,15}" title="Ingrese al menos 4 caracteres no numericos, los simbolos no estan permitidos">
 
           <label class="col-form-label" for="inputDefault">cedula</label>
-          <input type="number" class="form-control" placeholder="cedula" ng-model="abonadoseleccionado.cedula">
+          <input type="text" class="form-control" placeholder="cedula" ng-model="abonadoseleccionado.cedula" required pattern="[0-9]{10,10}" title="Requiere 10 digitos">
 
           <label class="col-form-label" for="inputDefault">Telefono</label>
-          <input type="number" class="form-control" placeholder="Telefono" ng-model="abonadoseleccionado.telefono">
+          <input type="text" class="form-control" placeholder="Telefono" ng-model="abonadoseleccionado.telefono" required pattern="[0-9]{7,15}" title="Solo caracteres numericos">
 
           <label class="col-form-label" for="inputDefault">Correo</label>
-          <input type="email" class="form-control" placeholder="correo" ng-model="abonadoseleccionado.correo">
+          <input type="email" class="form-control" placeholder="correo" ng-model="abonadoseleccionado.correo" required>
         </div>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" ng-click="actualizarAbonado()">Guardar</button>
+        <button type="submit" class="btn btn-success" ng-click="modalabo.$valid && actualizarAbonado()">Guardar</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">cancelar</button>
       </div>
+    </form>
     </div>
   </div>
 </div>

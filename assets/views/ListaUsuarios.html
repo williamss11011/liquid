@@ -8,50 +8,54 @@
         <div class="card-body">
 
           <!-- formulario -->
-
+<form action="" name="user">
           <div class="form-group">
-         <form action="" >
+         
             <label class="col-form-label" for="inputDefault" id="nombre">Nombre</label>
-            <input required type="text" class="form-control" placeholder="Nombre" ng-model="usuario.nombre">
+            <input type="text" class="form-control" placeholder="Nombre" ng-model="usuario.nombre" required pattern="[A-Za-z]{4,15}" title="Ingrese al menos 4 caracteres no numericos, los simbolos no estan permitidos">
           
-            <label required class="col-form-label" for="inputDefault">Apellido</label>
-            <input type="text" class="form-control" placeholder="Apellido" ng-model="usuario.apellido">
+            <label class="col-form-label" for="inputDefault">Apellido</label>
+            <input type="text" class="form-control" placeholder="Apellido" ng-model="usuario.apellido" required pattern="[A-Za-z]{4,15}" title="Ingrese al menos 4 caracteres no numericos, los simbolos no estan permitidos">
 
             <label class="col-form-label" for="inputDefault">cedula</label>
-            <input type="number" class="form-control" placeholder="cedula" ng-model="usuario.cedula">
+            <input type="text" class="form-control" placeholder="cedula" ng-model="usuario.cedula" required pattern="[0-9]{10,10}" title="Requiere 10 digitos">
 
             <label class="col-form-label" for="inputDefault">Telefono</label>
-            <input type="number" class="form-control" placeholder="Telefono" ng-model="usuario.telefono">
+            <input type="text" class="form-control" placeholder="Telefono" ng-model="usuario.telefono" required pattern="[0-9]{7,15}" title="Solo caracteres numericos, al menos 7 digitos">
 
             <label class="col-form-label" for="inputDefault">Correo</label>
-            <input type="text" class="form-control" placeholder="correo" ng-model="usuario.correo">
+            <input type="email" class="form-control" placeholder="correo" ng-model="usuario.correo" required>
 
             <label class="col-form-label" for="inputDefault">Password</label>
-            <input type="text" class="form-control" placeholder="password" ng-model="usuario.password">
+            <input type="text" class="form-control" placeholder="password" ng-model="usuario.password" required>
 
             <label class="col-form-label" for="inputDefault">Descripcion</label>
-            <input type="text" class="form-control" placeholder="descripcion" ng-model="usuario.descripcion">
+            <input type="text" class="form-control" placeholder="descripcion" ng-model="usuario.descripcion" required>
 
             <label class="col-form-label" for="inputDefault">Rol</label>
             <!-- <input type="text" class="form-control" placeholder="rol" ng-model="usuario.rol"> -->
-            <select class="form-control" ng-model="usuario.rol">
+            <select class="form-control" ng-model="usuario.rol" required title="Seleccione una opcion">
               <option value="0">Administrador</option>
               <option value="1">Lector</option>
 
             </select>
 
             <label class="col-form-label" for="inputDefault">Sector</label>
-            <select class="form-control" ng-model="usuario.sector_id">
+            <select class="form-control" ng-model="usuario.sector_id" required title="Seleccione una opcion">
               <option ng-repeat="sector in ListaSectores" ng-value="sector.id">{{sector.nombre}}</option>
             </select>
-        </form>
+        
 
           </div>
 
-          <button type="submit" class="btn btn-success" ng-click="guardarUsuario()" onsubmit="return validarFormulario()">Guardar</button>
+          <!-- <button type="submit" class="btn btn-success" ng-click="guardarUsuario()" >Guardar</button> -->
+          <button type="submit" class="btn btn-success" ng-click="user.$valid && guardarUsuario()">Guardar</button>
           <button type="button" class="btn btn-danger" ng-click="regresar()">Cancelar</button>
-          
+        </form>
         </div>
+
+
+
       </div>
     </div>
 
@@ -179,6 +183,7 @@
 <div class="modal" id="EditarModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      <form action="" name="usermodal">
       <div class="modal-header">
         <h5 class="modal-title">Editar Usuario</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -190,31 +195,36 @@
 
         <div class="form-group">
           <label class="col-form-label" for="inputDefault">Nombre</label>
-          <input type="text" class="form-control" placeholder="Nombre" ng-model="usuarioseleccionado.nombre">
+          <input type="text" class="form-control" placeholder="Nombre" ng-model="usuarioseleccionado.nombre" required pattern="[A-Za-z]{4,15}" title="Ingrese al menos 4 caracteres no numericos, los simbolos no estan permitidos">
 
           <label class="col-form-label" for="inputDefault">Apellido</label>
-          <input type="text" class="form-control" placeholder="Apellido" ng-model="usuarioseleccionado.apellido">
+          <input type="text" class="form-control" placeholder="Apellido" ng-model="usuarioseleccionado.apellido" required pattern="[A-Za-z]{4,15}" title="Ingrese al menos 4 caracteres no numericos, los simbolos no estan permitidos">
 
           <label class="col-form-label" for="inputDefault">cedula</label>
-          <input type="text" class="form-control" placeholder="cedula" ng-model="usuarioseleccionado.cedula">
+          <input type="text" class="form-control" placeholder="cedula" ng-model="usuarioseleccionado.cedula" required pattern="[0-9]{10,10}" title="Requiere 10 digitos">
 
           <label class="col-form-label" for="inputDefault">Telefono</label>
-          <input type="text" class="form-control" placeholder="Telefono" ng-model="usuarioseleccionado.telefono">
+          <input type="text" class="form-control" placeholder="Telefono" ng-model="usuarioseleccionado.telefono" required pattern="[0-9]{7,15}" title="Solo caracteres numericos, al menos 7 digitos">
 
           <label class="col-form-label" for="inputDefault">Correo</label>
-          <input type="text" class="form-control" placeholder="correo" ng-model="usuarioseleccionado.correo">
+          <input type="email" class="form-control" placeholder="correo" ng-model="usuarioseleccionado.correo" required>
 
           <label class="col-form-label" for="inputDefault">Password</label>
-          <input type="text" class="form-control" placeholder="password" ng-model="usuarioseleccionado.password">
+          <input type="text" class="form-control" placeholder="password" ng-model="usuarioseleccionado.password" required>
 
           <label class="col-form-label" for="inputDefault">Descripcion</label>
-          <input type="text" class="form-control" placeholder="descripcion" ng-model="usuarioseleccionado.descripcion">
+          <input type="text" class="form-control" placeholder="descripcion" ng-model="usuarioseleccionado.descripcion" required>
 
           <label class="col-form-label" for="inputDefault">Rol</label>
-          <input type="text" class="form-control" placeholder="rol" ng-model="usuarioseleccionado.rol">
+          <!-- <input type="text" class="form-control" placeholder="rol" ng-model="usuarioseleccionado.rol"> -->
+           <select class="form-control" ng-model="usuario.rol" required title="Seleccione una opcion">
+              <option value="0">Administrador</option>
+              <option value="1">Lector</option>
+
+            </select>
           
           <label class="col-form-label" for="inputDefault">Sector</label>
-            <select class="form-control" ng-model="usuarioseleccionado.sector_id">
+            <select class="form-control" ng-model="usuarioseleccionado.sector_id" required title="Seleccione una opcion">
               <option ng-repeat="sector in ListaSectores" ng-value="sector.id">{{sector.nombre}}</option>
             </select>
         </div>
@@ -222,9 +232,10 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" ng-click="actualizarUsuario()">Guardar</button>
+        <button type="submit" class="btn btn-success" ng-click="usermodal.$valid && actualizarUsuario()">Guardar</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -252,25 +263,4 @@
 
 <script>
     
-  function validarFormulario(){
- 
-    var txtNombre = document.getElementById('nombre').value;
-    
- 
-    var banderaRBTN = false;
- 
-    //Test campo obligatorio
-    if(txtNombre == null || txtNombre.length == 0 || /^\s+$/.test(txtNombre)){
-      alert('ERROR: El campo nombre no debe ir vacío o lleno de solamente espacios en blanco');
-      return false;
-    }
- 
-    if(!banderaRBTN){
-      alert('ERROR: Debe elegir una opción de radio button');
-      return false;
-    }
- 
-    return true;
-  }
- 
-  </script>
+  

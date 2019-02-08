@@ -6,20 +6,20 @@
       <div class="card border-secondary mb-3">
         <div class="card-header">Formulario</div>
         <div class="card-body">
-
+<form action="" name="cuenta">
           <div class="form-group">
             <label class="col-form-label" for="inputDefault">Abonado</label>
-            <select class="form-control" ng-model="Cuenta.abonado_id">
+            <select class="form-control" ng-model="Cuenta.abonado_id" required>
               <option ng-repeat="abonado in ListaAbonados" ng-value="abonado.id">{{abonado.nombre}} {{abonado.apellido}}</option>
             </select>
 
             <label class="col-form-label" for="inputDefault">Sectores</label>
-            <select class="form-control" ng-model="Cuenta.sector" ng-change="CambioSector()">
+            <select class="form-control" ng-model="Cuenta.sector" ng-change="CambioSector()" required>
               <option ng-repeat="sector in ListaSectores" ng-value="sector">{{sector.nombre}}</option>
             </select>
 
             <label class="col-form-label" for="inputDefault">Tarifa</label>
-            <select class="form-control" ng-model="Cuenta.tarifa">
+            <select class="form-control" ng-model="Cuenta.tarifa" required>
               <option value="Comercial">Comercial</option>
               <option value="Industrial">Industrial</option>
               <option value="Publico">Publico</option>
@@ -29,7 +29,7 @@
 
             <label class="col-form-label" for="inputDefault">Marca de medidor</label>
             <!-- <input type="text" class="form-control" placeholder="Marca de medidor" ng-model="Cuenta.marca_medidor"> -->
-            <select class="form-control" ng-model="Cuenta.marca_medidor">
+            <select class="form-control" ng-model="Cuenta.marca_medidor" required>
               <option value="IMDIM-MP15">IMDIM-MP15</option>
               <option value="IMDIM-MP20">IMDIM-MP20</option>
               <option value="IMDIM-MP25">IMDIM-MP25</option>
@@ -38,14 +38,14 @@
             </select>
 
             <label class="col-form-label" for="inputDefault">Direccion</label>
-            <input type="text" class="form-control" placeholder="Direccion" ng-model="Cuenta.direccion">
+            <input type="text" class="form-control" placeholder="Direccion" ng-model="Cuenta.direccion" required>
           </div>
 
 
           <button class="btn btn-primary " ng-click="initControlMaps()">Dibujar</button>
-          <button type="button" class="btn btn-success " ng-click="IngresarCuenta()">Guardar</button>
+          <button type="submit" class="btn btn-success " ng-click="cuenta.$valid && IngresarCuenta()">Guardar</button>
 
-
+        </form>
         </div>
 
 

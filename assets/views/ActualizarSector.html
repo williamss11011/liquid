@@ -1,48 +1,47 @@
 <div class="container-fluid">
-    <h1>Actualizar Sector</h1>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="card border-secondary mb-3">
-          <div class="card-header">Formulario</div>
-          <div class="card-body">
-  
+  <h1>Actualizar Sector</h1>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card border-secondary mb-3">
+        <div class="card-header">Formulario</div>
+        <div class="card-body">
+          <form action="" name="sector">
             <div class="form-group">
-              
+
               <label class="col-form-label" for="inputDefault">Nombre</label>
-              <input type="text" class="form-control" placeholder="Nombre" ng-model="sectorseleccionado.nombre">
-  
+              <input type="text" class="form-control" placeholder="Nombre" ng-model="sectorseleccionado.nombre" required pattern="[A-Za-z]{4,15}" title="Ingrese al menos 4 caracteres no numericos, los simbolos no estan permitidos">
+
               <label class="col-form-label" for="inputDefault">Descripcion</label>
-              <input type="text" class="form-control" placeholder="Descripcion" ng-model="sectorseleccionado.descripcion">
-  
+              <input type="text" class="form-control" placeholder="Descripcion" ng-model="sectorseleccionado.descripcion" required>
+
               <label class="col-form-label" for="inputDefault">Color</label>
               <input type="color" class="form-control" placeholder="Color" ng-model="sectorseleccionado.color">
-  
+
             </div>
-            
 
-            <button type="button" class="btn btn-success" ng-click="actualizarSector()">Guardar</button>
+
+            <button type="submit" class="btn btn-success" ng-click="sector.$valid && actualizarSector()">Guardar</button>
             <button type="button" class="btn btn-danger" ng-click="regresar()">Cancelar</button>
-          
-          </div>
+          </form>
         </div>
+      </div>
 
-         
-      </div>
-  
-  
-      <div class="col-md-9">
-        <div class="card border-secondary mb-3">
-          <div class="card-header">Mapa</div>
-          <div>
-            
-                  
-                  <div id="mapid" style="height:74vh"></div>
-  
-          </div>
-        </div>
-  
-      </div>
-  
+
     </div>
+
+
+    <div class="col-md-9">
+      <div class="card border-secondary mb-3">
+        <div class="card-header">Mapa</div>
+        <div>
+
+
+          <div id="mapid" style="height:74vh"></div>
+
+        </div>
+      </div>
+
+    </div>
+
   </div>
-  
+</div>

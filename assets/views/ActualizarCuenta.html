@@ -1,70 +1,69 @@
 <div class="container-fluid">
-        <h1>Actualizar Cuentas</h1>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="card border-secondary mb-3">
-              <div class="card-header">Formulario</div>
-              <div class="card-body">
-      
-                <div class="form-group">
-                        <label class="col-form-label" for="inputDefault">Abonado</label>
-                        <select class="form-control" ng-model="cuentaseleccionada.abonado_id.id">
-                          <option ng-repeat="abonado in ListaAbonados" ng-value="abonado.id">{{abonado.nombre}}</option>
-                        </select>
-            
-                        <label class="col-form-label" for="inputDefault">Sectores</label>
-                        <select class="form-control" ng-model="cuentaseleccionada.sector_id.id" disabled="true">
-                          <option ng-repeat="sector in ListaSectores" ng-value="sector.id">{{sector.nombre}}</option>
-                        </select>
-            
-                        <label class="col-form-label" for="inputDefault">Tarifa</label>
-                        <select class="form-control" ng-model="cuentaseleccionada.tarifa">
-                          <option value="Comercial">Comercial</option>
-                          <option value="Industrial">Industrial</option>
-                          <option value="Publico">Publico</option>
-                          <option value="Residencial">Residencial</option>
-                        </select>
-            
-            
-                        <label class="col-form-label" for="inputDefault">Marca de medidor</label>
-                        <!-- <input type="text" class="form-control" placeholder="Marca de medidor" ng-model="cuentaseleccionada.marca_medidor"> -->
-                        <select class="form-control" ng-model="cuentaseleccionada.marca_medidor">
-                          <option value="IMDIM-MP15">IMDIM-MP15</option>
-                          <option value="IMDIM-MP20">IMDIM-MP20</option>
-                          <option value="IMDIM-MP25">IMDIM-MP25</option>
-                          <option value="JYH-ST20">JYH-ST20</option>
-                          <option value="JYH-ST25">JYH-ST25</option>
-                        </select>
-            
-                        <label class="col-form-label" for="inputDefault">Direccion</label>
-                        <input type="text" class="form-control" placeholder="Direccion" ng-model="cuentaseleccionada.direccion">
-                  
-                </div>
-                
-    
-                <button type="button" class="btn btn-success" ng-click="actualizarCuenta()">Guardar</button>
-                <button type="button" class="btn btn-danger" ng-click="regresar()">Cancelar</button>
-              
-              </div>
+  <h1>Actualizar Cuentas</h1>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card border-secondary mb-3">
+        <div class="card-header">Formulario</div>
+        <div class="card-body">
+          <form action="" name="cuenta">
+            <div class="form-group">
+              <label class="col-form-label" for="inputDefault">Abonado</label>
+              <select class="form-control" ng-model="cuentaseleccionada.abonado_id.id" required>
+                <option ng-repeat="abonado in ListaAbonados" ng-value="abonado.id">{{abonado.nombre}}</option>
+              </select>
+
+              <label class="col-form-label" for="inputDefault">Sectores</label>
+              <select class="form-control" ng-model="cuentaseleccionada.sector_id.id" disabled="true" required>
+                <option ng-repeat="sector in ListaSectores" ng-value="sector.id">{{sector.nombre}}</option>
+              </select>
+
+              <label class="col-form-label" for="inputDefault">Tarifa</label>
+              <select class="form-control" ng-model="cuentaseleccionada.tarifa" required>
+                <option value="Comercial">Comercial</option>
+                <option value="Industrial">Industrial</option>
+                <option value="Publico">Publico</option>
+                <option value="Residencial">Residencial</option>
+              </select>
+
+
+              <label class="col-form-label" for="inputDefault">Marca de medidor</label>
+              <!-- <input type="text" class="form-control" placeholder="Marca de medidor" ng-model="cuentaseleccionada.marca_medidor"> -->
+              <select class="form-control" ng-model="cuentaseleccionada.marca_medidor" required>
+                <option value="IMDIM-MP15">IMDIM-MP15</option>
+                <option value="IMDIM-MP20">IMDIM-MP20</option>
+                <option value="IMDIM-MP25">IMDIM-MP25</option>
+                <option value="JYH-ST20">JYH-ST20</option>
+                <option value="JYH-ST25">JYH-ST25</option>
+              </select>
+
+              <label class="col-form-label" for="inputDefault">Direccion</label>
+              <input type="text" class="form-control" placeholder="Direccion" ng-model="cuentaseleccionada.direccion" required>
+
             </div>
-    
-             
-          </div>
-      
-      
-          <div class="col-md-9">
-            <div class="card border-secondary mb-3">
-              <div class="card-header">Mapa</div>
-              <div>
-                
-                      
-                      <div id="mapid" style="height:74vh"></div>
-      
-              </div>
-            </div>
-      
-          </div>
-      
+
+
+            <button type="submit" class="btn btn-success" ng-click="cuenta.$valid && actualizarCuenta()">Guardar</button>
+            <button type="button" class="btn btn-danger" ng-click="regresar()">Cancelar</button>
+          </form>
         </div>
       </div>
-      
+
+
+    </div>
+
+
+    <div class="col-md-9">
+      <div class="card border-secondary mb-3">
+        <div class="card-header">Mapa</div>
+        <div>
+
+
+          <div id="mapid" style="height:74vh"></div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

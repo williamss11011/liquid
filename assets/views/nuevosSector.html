@@ -6,22 +6,22 @@
       <div class="card border-secondary mb-3">
         <div class="card-header">Formulario</div>
         <div class="card-body">
+          <form action="" name="sector">
+            <div class="form-group">
+              <label class="col-form-label" for="inputDefault">Nombre</label>
+              <input type="text" class="form-control" placeholder="Nombre" ng-model="sector.nombre" required pattern="[A-Za-z]{4,15}" title="Ingrese al menos 4 caracteres no numericos, los simbolos no estan permitidos">
 
-          <div class="form-group">
-            <label class="col-form-label" for="inputDefault">Nombre</label>
-            <input type="text" class="form-control" placeholder="Nombre" ng-model="sector.nombre">
+              <label class="col-form-label" for="inputDefault">Descripcion</label>
+              <input type="text" class="form-control" placeholder="Descripcion" ng-model="sector.descripcion" required>
 
-            <label class="col-form-label" for="inputDefault">Descripcion</label>
-            <input type="text" class="form-control" placeholder="Descripcion" ng-model="sector.descripcion">
+              <label class="col-form-label" for="inputDefault">Color</label>
+              <input type="color" class="form-control" placeholder="Color" ng-model="sector.color">
+            </div>
 
-            <label class="col-form-label" for="inputDefault">Color</label>
-            <input type="color" class="form-control" placeholder="Color" ng-model="sector.color">
-          </div>
 
-          
-          <button class="btn btn-primary " ng-click="initControlMaps()">Dibujar</button>
-          <button type="button" class="btn btn-success " ng-click="saveDraw()">Guardar</button>
-
+            <button class="btn btn-primary " ng-click="initControlMaps()">Dibujar</button>
+            <button type="submit" class="btn btn-success " ng-click="sector.$valid && saveDraw()">Guardar</button>
+          </form>
 
         </div>
 
@@ -37,8 +37,8 @@
       <div class="card border-secondary mb-3">
         <div class="card-header">
           Mapa
-          
-          
+
+
         </div>
         <div>
 
